@@ -33,7 +33,7 @@ def collect_events(helper, ew):
     # Get Checkpoint
     key = f'pihole_api_{pihole_host}'
     current_time = int(time.time())
-    check_time = current_time - interval
+    check_time = current_time - interval + 60
 
     if helper.get_check_point(key):
         old_state = helper.get_check_point(key)
