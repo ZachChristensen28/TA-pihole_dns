@@ -16,7 +16,7 @@ The Pi-hole Add-on allows Splunk data administrators to map the Pi-Hole® DNS se
 Version 1.2.8
 
 New
-- Added scripted input to ingest lists which enlable the mapping of blocked queries to originating blocklists #21
+- Added scripted input to ingest lists which enable the mapping of blocked queries to originating blocklists #21
 ```
 
 ## Navigation
@@ -90,6 +90,7 @@ Source type | Description | CIM Data Models
 `pihole:dhcp` | Pi-hole DHCP events | [Network Sessions](https://docs.splunk.com/Documentation/CIM/latest/User/NetworkSessions)
 `pihole:ftl` | Pi-hole FTL events | None
 `pihole:system` | Pi-hole API data | None
+`pihole:lists` | Pi-hole lists | None
 
 ## Installation Walkthrough
 
@@ -116,7 +117,7 @@ sourcetype = pihole:ftl
 # index = dns
 ```
 
-Additionally, it is recommended to enable the scripted input to allow mapping of blocked queries to the originating bloclists.
+Additionally, it is recommended to enable the scripted input to allow mapping of blocked queries to the originating blocklists.
 
 ```SHELL
 [script://./bin/pihole_lists.sh]
