@@ -14,6 +14,9 @@ The Pi-hole Add-on allows Splunk data administrators to map the Pi-Hole® DNS se
 
 ```TEXT
 Version 1.2.8
+
+New
+- Added scripted input to ingest lists which enable the mapping of blocked queries to originating blocklists #21
 ```
 
 ## Navigation
@@ -87,6 +90,7 @@ Source type | Description | CIM Data Models
 `pihole:dhcp` | Pi-hole DHCP events | [Network Sessions](https://docs.splunk.com/Documentation/CIM/latest/User/NetworkSessions)
 `pihole:ftl` | Pi-hole FTL events | None
 `pihole:system` | Pi-hole API data | None
+`pihole:lists` | Pi-hole lists | None
 
 ## Installation Walkthrough
 
@@ -104,14 +108,28 @@ Once installed the configurations can be made. The following is a sample inputs.
 disabled = 0
 sourcetype = pihole
 # optionally specify an index, if configured.
-#index = dns
+# index = dns
 
 [monitor:///var/log/pihole-FTL.log]
 disabled = 0
 sourcetype = pihole:ftl
 # optionally specify an index, if configured.
-#index = dns
+# index = dns
 ```
+
+Additionally, it is recommended to enable the scripted input to allow mapping of blocked queries to the originating blocklists.
+
+```SHELL
+[script://./bin/pihole_lists.sh]
+disabled = 0
+sourcetype = pihole:lists
+# Everyday at 4:01 AM
+interval = 1 4 * * *
+# optionally specify an index, if configured.
+# index = dns
+```
+
+**Note:** The `interval` can be specified as a cron schedule or in seconds. It is recommended to use a cron schedule to avoid the script from executing on startup. For more information see Splunk's documentation for intervals in [inputs.conf](https://docs.splunk.com/Documentation/Splunk/latest/Admin/Inputsconf).
 
 Push the configuration to the forwarder, if using a deployment server, or restart the UF if configuring on the UF itself.
 
