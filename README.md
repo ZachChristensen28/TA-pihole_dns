@@ -100,7 +100,7 @@ Download the latest [Splunk Universal Forwarder (UF)](https://www.splunk.com/en_
 
 Install the UF according to [Splunk Docs](https://docs.splunk.com/Documentation/Forwarder/latest/Forwarder/Installtheuniversalforwardersoftware).
 
-Once installed the configurations can be made. The following is a sample inputs.conf that can be pushed using a deployment server or configured on the UF itself.
+Once installed the configurations can be made. The following is a sample inputs.conf that can be pushed using a deployment server or configured on the UF itself. Place the following configurations in the `../local/inputs.conf` file.
 
 ```SHELL
 # inputs.conf
