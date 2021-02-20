@@ -5,7 +5,7 @@
     "id": {
       "group": null,
       "name": "TA-pihole_dns",
-      "version": "1.2.7"
+      "version": "1.2.8"
     },
     "author": [
       {
@@ -17,11 +17,17 @@
     "releaseDate": null,
     "description": "This Technology Add-on provides CIM compliant field extractions, eventtypes and tags for the Pihole DNS server.",
     "classification": {
-      "intendedAudience": null,
-      "categories": [],
-      "developmentStatus": null
+      "intendedAudience": "IT",
+      "categories": [
+        "IT Operations",
+        "Utilities"
+      ],
+      "developmentStatus": "Production/Stable"
     },
-    "commonInformationModels": null,
+    "commonInformationModels": {
+      "Network Sessions": "=4.18.0",
+      "Network Resolution": "=4.18.0"
+    },
     "license": {
       "name": null,
       "text": null,
@@ -33,16 +39,22 @@
       "uri": null
     },
     "releaseNotes": {
-      "name": null,
+      "name": "README",
       "text": "./README.md",
-      "uri": null
+      "uri": "https://github.com/ZachChristensen28/TA-pihole_dns/releases"
     }
   },
   "dependencies": null,
-  "tasks": null,
+  "tasks": [
+    "input://pihole_system"
+  ],
   "inputGroups": null,
   "incompatibleApps": null,
   "platformRequirements": null,
-  "supportedDeployments": ["*"],
-  "targetWorkloads": ["*"]
+  "supportedDeployments": [
+    "*"
+  ],
+  "targetWorkloads": [
+    "*"
+  ]
 }
