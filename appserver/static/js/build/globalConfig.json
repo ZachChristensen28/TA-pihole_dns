@@ -263,8 +263,8 @@
                         "label": "Status"
                     },
                     {
-                        "field": "host",
-                        "label": "Pi-Hole Host"
+                        "field": "account",
+                        "label": "Account Credentials"
                     }
                 ],
                 "actions": [
