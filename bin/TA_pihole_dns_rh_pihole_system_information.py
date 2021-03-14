@@ -20,29 +20,26 @@ fields = [
         encrypted=False,
         default='3600',
         validator=validator.Pattern(
-            regex=r"""^[3-9][0-9][0-9]$|^[1-9][0-9][0-9][0-9]\d*$""", 
+            regex=r"""^[3-9][0-9][0-9]$|^[1-9][0-9][0-9][0-9]\d*$""",
         )
-    ), 
+    ),
     field.RestField(
         'index',
         required=True,
         encrypted=False,
         default='default',
         validator=validator.String(
-            min_len=1, 
-            max_len=80, 
+            min_len=1,
+            max_len=80,
         )
-    ), 
+    ),
     field.RestField(
-        'pihole_host',
+        'account',
         required=True,
         encrypted=False,
         default=None,
-        validator=validator.String(
-            min_len=0, 
-            max_len=8192, 
-        )
-    ), 
+        validator=None
+    ),
 
     field.RestField(
         'disabled',
@@ -56,7 +53,7 @@ model = RestModel(fields, name=None)
 
 
 endpoint = DataInputModel(
-    'pihole_system',
+    'pihole_system_information',
     model,
 )
 

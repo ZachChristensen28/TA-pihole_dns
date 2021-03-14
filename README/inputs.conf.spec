@@ -1,2 +1,2 @@
-[pihole_system://<name>]
-pihole_host = IP/FQDN of Pi-hole
+[pihole_system_information://<name>]
+account = API Credentials

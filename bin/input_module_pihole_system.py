@@ -9,12 +9,7 @@ import pihole_constants as const
 
 
 def validate_input(helper, definition):
-    # Simple validation
-    pihole_host = definition.parameters.get('pihole_host')
-
-    if len(pihole_host) == 0:
-        raise ValueError('Pi-hole host cannot be empty.')
-    else:
+   # We have nothing left to verify
         pass
 
 

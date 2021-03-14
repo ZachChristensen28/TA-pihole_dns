@@ -27,13 +27,13 @@ class ModInputpihole_system(modinput_wrapper.base_modinput.BaseModInput):
             use_single_instance = input_module.use_single_instance_mode()
         else:
             use_single_instance = False
-        super(ModInputpihole_system, self).__init__("ta_pihole_dns", "pihole_system", use_single_instance)
+        super(ModInputpihole_system, self).__init__("ta_pihole_dns", "pihole_system_information", use_single_instance)
         self.global_checkbox_fields = None
 
     def get_scheme(self):
         """overloaded splunklib modularinput method"""
         scheme = super(ModInputpihole_system, self).get_scheme()
-        scheme.title = ("Pihole System")
+        scheme.title = ("Pihole System Information")
         scheme.description = ("Go to the add-on\'s configuration UI and configure modular inputs under the Inputs menu.")
         scheme.use_external_validation = True
         scheme.streaming_mode_xml = True
@@ -46,8 +46,8 @@ class ModInputpihole_system(modinput_wrapper.base_modinput.BaseModInput):
         For customized inputs, hard code the arguments here to hide argument detail from users.
         For other input types, arguments should be get from input_module. Defining new input types could be easier.
         """
-        scheme.add_argument(smi.Argument("pihole_host", title="Pi-Hole Host",
-                                         description="IP/FQDN of Pi-hole",
+        scheme.add_argument(smi.Argument("account", title="Account Credentials",
+                                         description="API Credentials",
                                          required_on_create=True,
                                          required_on_edit=False))
         return scheme
