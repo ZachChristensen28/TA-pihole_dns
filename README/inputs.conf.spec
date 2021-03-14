@@ -1,2 +1,2 @@
-[pihole_system_information://<name>]
+[pihole_system://<name>]
 account = API Credentials

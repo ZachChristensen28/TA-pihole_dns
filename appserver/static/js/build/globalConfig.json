@@ -276,7 +276,7 @@
             },
             "services": [
                 {
-                    "name": "pihole_system_information",
+                    "name": "pihole_system",
                     "title": "Pihole System Information",
                     "entity": [
                         {

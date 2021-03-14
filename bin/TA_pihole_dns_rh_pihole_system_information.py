@@ -53,7 +53,7 @@ model = RestModel(fields, name=None)
 
 
 endpoint = DataInputModel(
-    'pihole_system_information',
+    'pihole_system',
     model,
 )
 

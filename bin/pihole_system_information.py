@@ -27,7 +27,7 @@ class ModInputpihole_system(modinput_wrapper.base_modinput.BaseModInput):
             use_single_instance = input_module.use_single_instance_mode()
         else:
             use_single_instance = False
-        super(ModInputpihole_system, self).__init__("ta_pihole_dns", "pihole_system_information", use_single_instance)
+        super(ModInputpihole_system, self).__init__("ta_pihole_dns", "pihole_system", use_single_instance)
         self.global_checkbox_fields = None
 
     def get_scheme(self):
