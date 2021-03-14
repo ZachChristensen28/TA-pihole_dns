@@ -4,7 +4,7 @@
 
 Info | Description
 ------|----------
-Version | 1.2.8 - See on [Splunkbase](https://splunkbase.splunk.com/app/4505/)
+Version | 1.2.9 - See on [Splunkbase](https://splunkbase.splunk.com/app/4505/)
 Vendor Product Version | [Pi-hole® v5.2.x, FTL 5.7](https://pi-hole.net/)
 Add-on has a web UI | Yes, this Add-on contains a configuration page for the Modular Input.
 
@@ -13,10 +13,8 @@ The Pi-hole Add-on allows Splunk data administrators to map the Pi-Hole® DNS se
 ## Release Notes
 
 ```TEXT
-Version 1.2.8
+Version 1.2.9
 
-New
-- Added scripted input to ingest lists which enable the mapping of blocked queries to originating blocklists #21
 ```
 
 ## Navigation
