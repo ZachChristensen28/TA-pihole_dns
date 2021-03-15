@@ -2,7 +2,7 @@
     "meta": {
         "name": "TA-pihole_dns",
         "displayName": "pihole_dns",
-        "version": "1.0.0",
+        "version": "1.2.9",
         "apiVersion": "3.0.0",
         "restRoot": "TA_pihole_dns"
     },
@@ -21,7 +21,7 @@
                                 "label": "Account name"
                             },
                             {
-                                "field": "host",
+                                "field": "pihole_host",
                                 "label": "Pi-hole Host"
                             }
                         ],
@@ -53,6 +53,24 @@
                             ]
                         },
                         {
+                            "field": "pihole_host",
+                            "label": "Pi-hole Host",
+                            "type": "text",
+                            "required": true,
+                            "help": "Enter the FQDN/IP for the Pi-hole Server.",
+                            "options": {
+                                "placeholder": "IP/FQDN"
+                            },
+                            "validators": [
+                                {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 200,
+                                    "errorMsg": "Length of Hostname should be between 1 and 200"
+                                }
+                            ]
+                        },
+                        {
                             "field": "api_key",
                             "label": "API Key",
                             "type": "text",
@@ -64,25 +82,7 @@
                                     "type": "string",
                                     "minLength": 1,
                                     "maxLength": 8192,
-                                    "errorMsg": "Length of API Secret should be between 1 and 8192"
-                                }
-                            ]
-                        },
-                        {
-                            "field": "host",
-                            "label": "Pi-hole Host",
-                            "type": "text",
-                            "required": true,
-                            "help": "Enter the IP or FQDN for this account.",
-                            "options": {
-                                "placeholder": "Enter the IP/FQDN here"
-                            },
-                            "validators": [
-                                {
-                                    "type": "string",
-                                    "minLength": 1,
-                                    "maxLength": 50,
-                                    "errorMsg": "Length of the Pi-hole host should be between 1 and 50"
+                                    "errorMsg": "Length of API Key should be between 1 and 8192"
                                 }
                             ]
                         }
@@ -263,8 +263,8 @@
                         "label": "Status"
                     },
                     {
-                        "field": "account",
-                        "label": "Account Credentials"
+                        "field": "pihole_account",
+                        "label": "Pi-hole Account"
                     }
                 ],
                 "actions": [
@@ -277,7 +277,7 @@
             "services": [
                 {
                     "name": "pihole_system",
-                    "title": "Pihole System Information",
+                    "title": "Pihole System",
                     "entity": [
                         {
                             "field": "name",
@@ -335,14 +335,84 @@
                             ]
                         },
                         {
-                            "field": "account",
-                            "label": "Account Credentials",
-                            "help": "API Credentials",
+                            "field": "pihole_account",
+                            "label": "Pihole Account",
+                            "help": "Choose the Pihole Account to use.",
                             "required": true,
                             "type": "singleSelect",
                             "options": {
                                 "referenceName": "account",
-                                "placeholder": "Select the API Account Credentials"
+                                "placeholder": "Select the Pihole Account to use."
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "pihole_filters",
+                    "title": "Pihole Filters",
+                    "entity": [
+                        {
+                            "field": "name",
+                            "label": "Name",
+                            "type": "text",
+                            "help": "Enter a unique name for the data input",
+                            "required": true,
+                            "validators": [
+                                {
+                                    "type": "regex",
+                                    "pattern": "^[a-zA-Z]\\w*$",
+                                    "errorMsg": "Input Name must start with a letter and followed by alphabetic letters, digits or underscores."
+                                },
+                                {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 100,
+                                    "errorMsg": "Length of input name should be between 1 and 100"
+                                }
+                            ]
+                        },
+                        {
+                            "field": "interval",
+                            "label": "Interval",
+                            "type": "text",
+                            "required": true,
+                            "help": "Time interval of input in seconds.",
+                            "validators": [
+                                {
+                                    "type": "regex",
+                                    "pattern": "^\\-[1-9]\\d*$|^\\d*$",
+                                    "errorMsg": "Interval must be an integer."
+                                }
+                            ]
+                        },
+                        {
+                            "field": "index",
+                            "label": "Index",
+                            "type": "singleSelect",
+                            "defaultValue": "default",
+                            "options": {
+                                "endpointUrl": "data/indexes",
+                                "blackList": "^_.*$",
+                                "createSearchChoice": true
+                            },
+                            "required": true,
+                            "validators": [
+                                {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 80,
+                                    "errorMsg": "Length of index name should be between 1 and 80."
+                                }
+                            ]
+                        },
+                        {
+                            "field": "pihole_account",
+                            "label": "Pi-hole Account",
+                            "help": "",
+                            "required": true,
+                            "type": "singleSelect",
+                            "options": {
+                                "referenceName": "account"
                             }
                         }
                     ]

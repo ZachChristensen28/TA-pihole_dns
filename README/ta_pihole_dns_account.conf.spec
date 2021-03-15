@@ -1,3 +1,3 @@
 [<name>]
 api_key =
-host =
+pihole_host =

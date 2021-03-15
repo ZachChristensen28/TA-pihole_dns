@@ -15,6 +15,16 @@ util.remove_http_proxy_env_vars()
 
 fields = [
     field.RestField(
+        'pihole_host',
+        required=True,
+        encrypted=False,
+        default=None,
+        validator=validator.String(
+            min_len=1,
+            max_len=200,
+        )
+    ),
+    field.RestField(
         'api_key',
         required=True,
         encrypted=True,
@@ -23,17 +33,8 @@ fields = [
             min_len=1,
             max_len=8192,
         )
-    ),
-    field.RestField(
-        'host',
-        required=True,
-        encrypted=False,
-        default=None,
-        validator=validator.String(
-            min_len=1,
-            max_len=50,
-        )
     )
+
 ]
 model = RestModel(fields, name=None)
 

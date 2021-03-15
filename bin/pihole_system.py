@@ -33,7 +33,7 @@ class ModInputpihole_system(modinput_wrapper.base_modinput.BaseModInput):
     def get_scheme(self):
         """overloaded splunklib modularinput method"""
         scheme = super(ModInputpihole_system, self).get_scheme()
-        scheme.title = ("Pihole System Information")
+        scheme.title = ("Pihole System")
         scheme.description = ("Go to the add-on\'s configuration UI and configure modular inputs under the Inputs menu.")
         scheme.use_external_validation = True
         scheme.streaming_mode_xml = True
@@ -46,8 +46,8 @@ class ModInputpihole_system(modinput_wrapper.base_modinput.BaseModInput):
         For customized inputs, hard code the arguments here to hide argument detail from users.
         For other input types, arguments should be get from input_module. Defining new input types could be easier.
         """
-        scheme.add_argument(smi.Argument("account", title="Account Credentials",
-                                         description="API Credentials",
+        scheme.add_argument(smi.Argument("pihole_account", title="Pihole Account",
+                                         description="",
                                          required_on_create=True,
                                          required_on_edit=False))
         return scheme
@@ -65,6 +65,7 @@ class ModInputpihole_system(modinput_wrapper.base_modinput.BaseModInput):
 
     def get_account_fields(self):
         account_fields = []
+        account_fields.append("pihole_account")
         return account_fields
 
     def get_checkbox_fields(self):
