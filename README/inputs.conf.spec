@@ -1,2 +1,5 @@
+[pihole_filters://<name>]
+pihole_server =
+
 [pihole_system://<name>]
-account = API Credentials
+pihole_server =
