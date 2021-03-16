@@ -14,13 +14,15 @@ def validate_input(helper, definition):
 
 
 def collect_events(helper, ew):
+    # Get Credentials
+    account = helper.get_arg('account')
+    api_key = account['api_key']
+    pihole_host = account['pihole_host']
+
     # Get Log Level
     log_level = helper.get_log_level()
     helper.set_log_level(log_level)
     helper.log_info(f'log_level="{log_level}"')
-
-    # Get Pi-hole host
-    pihole_host = helper.get_arg('pihole_host')
 
     # Get Interval
     interval = int(helper.get_arg('interval'))
@@ -65,12 +67,17 @@ def collect_events(helper, ew):
         'Accept': 'application/json',
         'Content-type': 'application/json'
     }
+    params = {
+        'summary': '',
+        'type': '',
+        'version': ''
+    }
 
     # Make Call
     try:
         helper.log_info(f'msg="starting request", action="starting", hostname="{pihole_host}"')
         r = helper.send_http_request(
-            url, 'get', headers=headers, use_proxy=True)
+            url, 'get', headers=headers, parameters=params, use_proxy=True)
     except Exception as e:
         helper.log_error(
             f'error_msg="Unable to complete request", action="failed", hostname="{pihole_host}"')

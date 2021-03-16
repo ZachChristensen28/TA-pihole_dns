@@ -15,6 +15,8 @@ The Pi-hole Add-on allows Splunk data administrators to map the Pi-Hole® DNS se
 ```TEXT
 Version 1.2.9
 
+New
+- Added ability to pull regex and domain filters created in the Pi-hole server.
 ```
 
 ## Navigation
