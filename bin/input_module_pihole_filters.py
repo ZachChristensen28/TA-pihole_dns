@@ -17,7 +17,7 @@ def validate_input(helper, definition):
 
 def collect_events(helper, ew):
     # Get Credentials
-    account = helper.get_arg('account')
+    account = helper.get_arg('pihole_account')
     api_key = account['api_key']
     pihole_host = account['pihole_host']
 
