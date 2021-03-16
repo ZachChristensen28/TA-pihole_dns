@@ -18,7 +18,7 @@ def sendit(pihole_host, event_name, helper, params=None):
         :return: response
         """
         # Skip run if too close to previous run interval
-        if not checkpointer(pihole_host, event_name):
+        if not checkpointer(pihole_host, event_name, helper):
             return False
 
         helper.log_info(f'event_name="{event_name}", msg="starting {event_name} collection", hostname="{pihole_host}"')
@@ -70,6 +70,8 @@ def checkpointer(pihole_host, event_name, helper, set_checkpoint=False):
         :param set_checkpoint: Whether to set a new checkpoint
         :return: bool
         """
+        # Get Interval
+        interval = int(helper.get_arg('interval'))
         current_time = int(time.time())
         check_time = current_time - interval + 60
         key = f'{pihole_host}_{event_name}'

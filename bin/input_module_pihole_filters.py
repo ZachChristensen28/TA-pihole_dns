@@ -26,17 +26,13 @@ def collect_events(helper, ew):
     helper.set_log_level(log_level)
     helper.log_info(f'log_level="{log_level}"')
 
-    # Get Interval
-    interval = int(helper.get_arg('interval'))
-
-    # Start..
-    event_name = 'filters'
-
+    # Start
     for filter in const.filters:
         params = {
             'auth': api_key,
             'list': filter
         }
+        event_name = f'filters_{params["list"]}'
         response = sendit(pihole_host, event_name, helper, params)
 
         if response:
@@ -50,9 +46,3 @@ def collect_events(helper, ew):
 
             # Checkpointer
             checkpointer(pihole_host, event_name, helper, set_checkpoint=True)
-
-        else:
-            helper.log_error(
-                f'error_msg="Unable to retrieve information", action="failed", hostname="{pihole_host}"')
-            helper.log_debug(f'status_code="{r.status_code}", event_name="{event_name}')
-            return False
