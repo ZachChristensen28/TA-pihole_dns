@@ -4,7 +4,7 @@
 
 Info | Description
 ------|----------
-Version | 1.2.9 - See on [Splunkbase](https://splunkbase.splunk.com/app/4505/)
+Version | 1.3.0 - See on [Splunkbase](https://splunkbase.splunk.com/app/4505/)
 Vendor Product Version | [Pi-hole® v5.2.x, FTL 5.7](https://pi-hole.net/)
 Add-on has a web UI | Yes, this Add-on contains a configuration page for the Modular Input.
 
@@ -13,7 +13,7 @@ The Pi-hole Add-on allows Splunk data administrators to map the Pi-Hole® DNS se
 ## Release Notes
 
 ```TEXT
-Version 1.2.9
+Version 1.3.0
 
 New
 - Added ability to pull regex and domain filters created in the Pi-hole server.
