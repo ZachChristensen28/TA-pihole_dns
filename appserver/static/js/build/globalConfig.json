@@ -306,6 +306,9 @@
                             "defaultValue": "3600",
                             "required": true,
                             "help": "Time interval of input in seconds. Min 300 (5 minutes).",
+                            "options": {
+                                "placeholder": "3600"
+                            },
                             "validators": [
                                 {
                                     "type": "regex",
@@ -376,12 +379,15 @@
                             "label": "Interval",
                             "type": "text",
                             "required": true,
-                            "help": "Time interval of input in seconds.",
+                            "help": "Time interval of input in seconds. Min 300 (5 minutes).",
+                            "options": {
+                                "placeholder": "3600"
+                            },
                             "validators": [
                                 {
                                     "type": "regex",
-                                    "pattern": "^\\-[1-9]\\d*$|^\\d*$",
-                                    "errorMsg": "Interval must be an integer."
+                                    "pattern": "^[3-9][0-9][0-9]$|^[1-9][0-9][0-9][0-9]\\d*$",
+                                    "errorMsg": "Interval must be an integer larger than 300."
                                 }
                             ]
                         },
