@@ -1,2 +1,5 @@
+[pihole_filters://<name>]
+pihole_account =
+
 [pihole_system://<name>]
-pihole_host = IP/FQDN of Pi-hole
+pihole_account =
