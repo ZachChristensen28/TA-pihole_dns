@@ -22,6 +22,9 @@ New
 
 Updated
 - Updated the Modular input to make more flexible.
+
+Deprecated
+- With the upcoming version of Pi-hole® 6.0, the scripted input "pihole_lists.sh" will be deprecated. This information will be available through the REST API in the upcoming release.
 ```
 
 ## Navigation
@@ -176,7 +179,7 @@ sourcetype = pihole:ftl
 # index = dns
 ```
 
-Additionally, it is recommended to enable the scripted input to allow mapping of blocked queries to the originating blocklists.
+**(Deprecated)** Additionally, it is recommended to enable the scripted input to allow mapping of blocked queries to the originating blocklists.
 
 ```SHELL
 [script://./bin/pihole_lists.sh]
