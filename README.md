@@ -15,6 +15,7 @@ The Pi-hole Add-on allows Splunk data administrators to map the Pi-Hole® DNS se
 ```TEXT
 Version 1.3.1
 
+- Fixed typo in python script causing errors #28
 ```
 
 ## Navigation
