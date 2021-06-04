@@ -3,7 +3,8 @@
 
 from pihole_helper import *
 import pihole_constants as const
-from PHAuth import PHAuth
+from phauth import PHAuth
+import json
 
 
 def validate_input(helper, definition):
@@ -25,6 +26,8 @@ def collect_events(helper, ew):
     # Authenticate
     s = PHAuth(pihole_host, api_key, helper)
     sid = s.start_session()
+    if not sid:
+        return False
 
     # Collect domain information
     event_name = 'domain_collection'

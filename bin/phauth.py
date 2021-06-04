@@ -58,7 +58,7 @@ class PHAuth:
                 f'hostname="{self.host}"')
             request = r.json()
             challenge = request['challenge'].encode('ascii')
-            response = sha256(challenge + b':' + pwhash).hexdigest().encode('ascii')
+            response = str(sha256(challenge + b':' + pwhash).hexdigest().encode('ascii'))
         else:
             self.helper.log_error(
                 f'event_name="{event_name}", error_msg="Unable to retrieve challenge from server", action="failed", '
@@ -72,7 +72,7 @@ class PHAuth:
             event_name = f'{event_name}:session'
             self.helper.log_info(f'event_name="{event_name}", msg="sending challenge response"')
             s = self.helper.send_http_request(
-                url, 'post', headers=headers, payload={'response': response}, use_proxy=True)
+                url, 'post', headers=headers, payload={"response": response}, use_proxy=True)
 
         except Exception as e:
             self.helper.log_error(
@@ -94,5 +94,5 @@ class PHAuth:
                 f'event_name="{event_name}", error_msg="Unable to retrieve session", action="failed", hostname='
                 f'"{self.host}"')
             self.helper.log_debug(
-                f'event_name="{event_name}", hostname="{self.host}", status_code="{r.status_code}"')
+                f'event_name="{event_name}", hostname="{self.host}", status_code="{s.status_code}"')
             return False
