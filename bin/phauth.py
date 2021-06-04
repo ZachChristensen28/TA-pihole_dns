@@ -98,5 +98,5 @@ class PHAuth:
                 f'event_name="{event_name}", error_msg="Unable to retrieve session", action="failed", hostname='
                 f'"{self.host}"')
             self.helper.log_debug(
-                f'event_name="{event_name}", hostname="{self.host}", status_code="{s.status_code}"')
+                f'event_name="{event_name}", hostname="{self.host}", status_code="{s.status_code, s.reason}"')
             return False
