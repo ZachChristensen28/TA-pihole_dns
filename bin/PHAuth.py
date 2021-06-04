@@ -24,7 +24,7 @@ class PHAuth:
         pwhash = sha256(sha256(self.password).hexdigest().encode(
             'ascii')).hexdigest().encode('ascii')
         event_name = 'authentication'
-        url = f'{const.h_proto}://{self.host}/{const.api_auth}'
+        url = f'{const.h_proto}://{self.host}:{const.p_port}/{const.api_auth}'
         headers = {
             'Accept': 'application/json',
             'Content-type': 'application/json'

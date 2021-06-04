@@ -9,7 +9,7 @@ import json
 import pihole_constants as const
 
 
-def sendit(pihole_host, event_name, helper, params=None, payload=None):
+def sendit(pihole_host, event_name, helper, params=None, payload=None, port=None):
     """Send Request
 
     :param pihole_host: Pihole server to query
@@ -30,6 +30,9 @@ def sendit(pihole_host, event_name, helper, params=None, payload=None):
         'Accept': 'application/json',
         'Content-type': 'application/json'
     }
+    if port:
+        pihole_host = f'{pihole_host}:{port}'
+
     url = f'{const.h_proto}://{pihole_host}/{const.api_system}'
 
     # Get Proxy Information

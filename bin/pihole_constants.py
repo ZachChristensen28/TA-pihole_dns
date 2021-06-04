@@ -1,6 +1,9 @@
 # Protocol
 h_proto = 'http'
 
+# port
+p_port = '8080'
+
 # Filters
 filters = ['white', 'regex_white', 'black', 'regex_black']
 
