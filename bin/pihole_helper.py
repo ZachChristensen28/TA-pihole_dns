@@ -5,14 +5,14 @@ import time
 import pihole_constants as const
 
 
-def sendit(pihole_host, event_name, helper, params=None, payload=None, port=None):
+def sendit(pihole_host, event_name, helper, params=None, sid=None, port=None):
     """Send Request
 
     :param pihole_host: Pihole server to query
     :param event_name: Name of event performing the request
     :param helper: Splunk Helper
     :param params: Parameters for request
-    :param payload: Payload to send with request
+    :param sid: Session ID
     :param port: Port to use for call
     :return: response
     """
@@ -23,14 +23,24 @@ def sendit(pihole_host, event_name, helper, params=None, payload=None, port=None
     helper.log_info(
         f'event_name="{event_name}", msg="starting {event_name} collection", hostname="{pihole_host}"')
 
-    headers = {
-        'Accept': 'application/json',
-        'Content-type': 'application/json'
-    }
-    if port:
-        pihole_host = f'{pihole_host}:{port}'
+    if sid:
+        header = {
+            'Accept': 'application/json',
+            'Content-type': 'application/json',
+            'sid': sid
+        }
+    else:
+        header = {
+            'Accept': 'application/json',
+            'Content-type': 'application/json'
+        }
 
-    url = f'{const.h_proto}://{pihole_host}/{const.api_system}'
+    if port:
+        dest = f'{pihole_host}:{port}'
+    else:
+        dest = pihole_host
+
+    url = f'{const.h_proto}://{dest}/{const.api_system}'
 
     # Get Proxy Information
     proxy = helper.get_proxy()
@@ -48,7 +58,7 @@ def sendit(pihole_host, event_name, helper, params=None, payload=None, port=None
         helper.log_info(
             f'event_name="{event_name}", msg="starting http request", action="starting", hostname="{pihole_host}"')
         r = helper.send_http_request(
-            url, 'get', headers=headers, parameters=params, payload=payload, use_proxy=True)
+            url, 'get', headers=header, parameters=params, use_proxy=True)
     except Exception as e:
         helper.log_error(
             f'event_name="{event_name}", error_msg="Unable to complete request", action="failed", hostname="{pihole_host}"')

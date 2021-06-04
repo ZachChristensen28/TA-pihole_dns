@@ -2,6 +2,7 @@
 
 from hashlib import sha256
 import pihole_constants as const
+import json
 
 
 class PHAuth:
@@ -58,7 +59,7 @@ class PHAuth:
                 f'hostname="{self.host}"')
             request = r.json()
             challenge = request['challenge'].encode('ascii')
-            response = str(sha256(challenge + b':' + pwhash).hexdigest().encode('ascii'))
+            response = str(sha256(challenge + b':' + pwhash).hexdigest().encode('ascii')).lstrip('b\'').rstrip('\'')
         else:
             self.helper.log_error(
                 f'event_name="{event_name}", error_msg="Unable to retrieve challenge from server", action="failed", '
@@ -70,9 +71,12 @@ class PHAuth:
         # Send Challenge Response
         try:
             event_name = f'{event_name}:session'
+            payload = {
+                'response': response
+            }
             self.helper.log_info(f'event_name="{event_name}", msg="sending challenge response"')
             s = self.helper.send_http_request(
-                url, 'post', headers=headers, payload={"response": response}, use_proxy=True)
+                url, 'post', headers=headers, payload=json.dumps(payload), use_proxy=True)
 
         except Exception as e:
             self.helper.log_error(
@@ -87,7 +91,7 @@ class PHAuth:
             self.helper.log_info(f'event_name="{event_name}", msg="successfully created session", action="success"')
             session = s.json()
 
-            if session['session']['valid'] and session['session']['sid'] != 'null':
+            if session['session']['valid']:
                 return session['session']['sid']
         else:
             self.helper.log_error(

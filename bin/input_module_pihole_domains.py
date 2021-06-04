@@ -31,8 +31,7 @@ def collect_events(helper, ew):
 
     # Collect domain information
     event_name = 'domain_collection'
-    response = sendit(pihole_host, event_name, helper,
-                      payload={'sid': sid}, port=const.p_port)
+    response = sendit(pihole_host, event_name, helper, sid=sid, port=const.p_port)
 
     if response:
         for item in response['domains']:
