@@ -1,8 +1,8 @@
 
 # encoding = utf-8
 
-from bin.pihole_helper import *
-import bin.pihole_constants as const
+from pihole_helper import *
+import pihole_constants as const
 
 
 def validate_input(helper, definition):
@@ -22,10 +22,10 @@ def collect_events(helper, ew):
     helper.log_info(f'log_level="{log_level}"')
 
     # Start
-    for filter in const.filters:
+    for f in const.filters:
         params = {
             'auth': api_key,
-            'list': filter
+            'list': f
         }
         event_name = f'filters_{params["list"]}'
         response = sendit(pihole_host, event_name, helper, params)

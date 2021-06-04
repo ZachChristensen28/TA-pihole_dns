@@ -1,10 +1,9 @@
 
 # encoding = utf-8
 
-from bin.pihole_helper import *
-import bin.pihole_constants as const
-from bin.phauth import PHAuth
-import json
+from pihole_helper import *
+import pihole_constants as const
+from PHAuth import PHAuth
 
 
 def validate_input(helper, definition):

@@ -1,14 +1,14 @@
 
-import bin.ta_pihole_dns_declare
+import ta_pihole_dns_declare
 
-from bin.ta_pihole_dns.aob_py3.splunktaucclib.rest_handler.endpoint import (
+from splunktaucclib.rest_handler.endpoint import (
     field,
     validator,
     RestModel,
     SingleModel,
 )
-from bin.ta_pihole_dns.aob_py3.splunktaucclib.rest_handler import admin_external, util
-from bin.ta_pihole_dns.aob_py3.splunk_aoblib.rest_migration import ConfigMigrationHandler
+from splunktaucclib.rest_handler import admin_external, util
+from splunk_aoblib.rest_migration import ConfigMigrationHandler
 
 util.remove_http_proxy_env_vars()
 

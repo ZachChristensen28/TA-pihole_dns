@@ -2,7 +2,7 @@
 # encoding = utf-8
 
 import time
-import bin.pihole_constants as const
+import pihole_constants as const
 
 
 def sendit(pihole_host, event_name, helper, params=None, payload=None, port=None):
@@ -13,6 +13,7 @@ def sendit(pihole_host, event_name, helper, params=None, payload=None, port=None
     :param helper: Splunk Helper
     :param params: Parameters for request
     :param payload: Payload to send with request
+    :param port: Port to use for call
     :return: response
     """
     # Skip run if too close to previous run interval

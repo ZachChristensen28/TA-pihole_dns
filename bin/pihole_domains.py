@@ -1,11 +1,10 @@
-import bin.ta_pihole_dns_declare
+import ta_pihole_dns_declare
 import os
 import sys
 import json
-import bin.ta_pihole_dns.aob_py3.modinput_wrapper.base_modinput
-from bin.ta_pihole_dns.aob_py3 import modinput_wrapper
-from bin.ta_pihole_dns.aob_py3.solnlib.packages.splunklib import modularinput as smi
-import bin.input_module_pihole_domains as input_module
+import modinput_wrapper.base_modinput
+from solnlib.packages.splunklib import modularinput as smi
+import input_module_pihole_domains as input_module
 
 bin_dir = os.path.basename(__file__)
 

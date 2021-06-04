@@ -1,7 +1,7 @@
 
 # encoding = utf-8
 
-from bin.pihole_helper import *
+from pihole_helper import *
 import json
 
 

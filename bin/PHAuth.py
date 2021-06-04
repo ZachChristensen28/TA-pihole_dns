@@ -1,7 +1,7 @@
 # encoding = utf-8
 
 from hashlib import sha256
-import bin.pihole_constants as const
+import pihole_constants as const
 
 
 class PHAuth:
