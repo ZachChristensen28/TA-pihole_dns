@@ -1,8 +1,8 @@
 
 # encoding = utf-8
 
-from pihole_helper import *
-import pihole_constants as const
+from bin.pihole_helper import *
+import bin.pihole_constants as const
 
 
 def validate_input(helper, definition):

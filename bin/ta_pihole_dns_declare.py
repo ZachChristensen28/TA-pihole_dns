@@ -9,10 +9,7 @@ import os
 import sys
 import re
 
-if sys.version_info[0] < 3:
-    py_version = "aob_py2"
-else:
-    py_version = "aob_py3"
+py_version = "aob_py3"
 
 ta_name = 'TA-pihole_dns'
 ta_lib_name = 'ta_pihole_dns'

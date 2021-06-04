@@ -1,12 +1,12 @@
 
 # encoding = utf-8
 
-from pihole_helper import *
-import pihole_constants as const
+from bin.pihole_helper import *
+import json
 
 
 def validate_input(helper, definition):
-   # We have nothing left to verify
+    # We have nothing left to verify
     pass
 
 
@@ -33,14 +33,13 @@ def collect_events(helper, ew):
         return False
 
     # Build Event
-    event = {}
-    event['status'] = response['status']
-    event['type'] = response['type']
-    event['version'] = response['version']
-    event['privacy_level'] = response['privacy_level']
-    event['domains_on_blocklist'] = response['domains_being_blocked']
-    event['unique_domains'] = response['unique_domains']
-    event['gravity_updated'] = response['gravity_last_updated']['absolute']
+    event = {'status': response['status'],
+             'type': response['type'],
+             'version': response['version'],
+             'privacy_level': response['privacy_level'],
+             'domains_on_blocklist': response['domains_being_blocked'],
+             'unique_domains': response['unique_domains'],
+             'gravity_updated': response['gravity_last_updated']['absolute']}
 
     # Create Splunk Event
     splunk_event = helper.new_event(source=helper.get_input_type(), index=helper.get_output_index(

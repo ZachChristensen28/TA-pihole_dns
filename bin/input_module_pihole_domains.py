@@ -1,9 +1,10 @@
 
 # encoding = utf-8
 
-from pihole_helper import *
-import pihole_constants as const
-from PHAuth import PHAuth
+from bin.pihole_helper import *
+import bin.pihole_constants as const
+from bin.phauth import PHAuth
+import json
 
 
 def validate_input(helper, definition):
@@ -23,7 +24,8 @@ def collect_events(helper, ew):
     helper.log_info(f'log_level="{log_level}"')
 
     # Authenticate
-    sid = PHAuth(pihole_host, api_key, helper)
+    s = PHAuth(pihole_host, api_key, helper)
+    sid = s.start_session()
 
     # Collect domain information
     event_name = 'domain_collection'

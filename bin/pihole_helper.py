@@ -1,12 +1,8 @@
 
 # encoding = utf-8
 
-import os
-import sys
 import time
-import datetime
-import json
-import pihole_constants as const
+import bin.pihole_constants as const
 
 
 def sendit(pihole_host, event_name, helper, params=None, payload=None, port=None):

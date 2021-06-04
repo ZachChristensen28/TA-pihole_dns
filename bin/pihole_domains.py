@@ -1,16 +1,11 @@
-import ta_pihole_dns_declare
-
+import bin.ta_pihole_dns_declare
 import os
 import sys
-import time
-import datetime
 import json
-
-import modinput_wrapper.base_modinput
-from solnlib.packages.splunklib import modularinput as smi
-
-
-import input_module_pihole_domains as input_module
+import bin.ta_pihole_dns.aob_py3.modinput_wrapper.base_modinput
+from bin.ta_pihole_dns.aob_py3 import modinput_wrapper
+from bin.ta_pihole_dns.aob_py3.solnlib.packages.splunklib import modularinput as smi
+import bin.input_module_pihole_domains as input_module
 
 bin_dir = os.path.basename(__file__)
 
@@ -35,7 +30,7 @@ class ModInputpihole_domains(modinput_wrapper.base_modinput.BaseModInput):
     def get_scheme(self):
         """overloaded splunklib modularinput method"""
         scheme = super(ModInputpihole_domains, self).get_scheme()
-        scheme.title = ("Pihole Domains")
+        scheme.title = "Pihole Domains"
         scheme.description = (
             "Go to the add-on\'s configuration UI and configure modular inputs under the Inputs menu.")
         scheme.use_external_validation = True
@@ -67,8 +62,7 @@ class ModInputpihole_domains(modinput_wrapper.base_modinput.BaseModInput):
         input_module.collect_events(self, ew)
 
     def get_account_fields(self):
-        account_fields = []
-        account_fields.append("pihole_account")
+        account_fields = ["pihole_account"]
         return account_fields
 
     def get_checkbox_fields(self):
