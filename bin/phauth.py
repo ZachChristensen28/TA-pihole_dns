@@ -13,14 +13,19 @@ class PHAuth:
     :param host: Pi-hole host to query
     :param password: password to authenticate
     :param helper: helper
+    :param port: API port to use
     """
 
-    def __init__(self, host, password, helper):
+    def __init__(self, host, password, helper, port=None):
         self.host = host
+        self.port = port
         self.password = password
         self.helper = helper
         self.sid = None
-        self.url = f'{const.h_proto}://{self.host}:{const.p_port}/{const.api_auth}'
+        if port:
+            self.url = f'{const.h_proto}://{self.host}:{self.port}/{const.api_auth}'
+        else:
+            self.url = f'{const.h_proto}://{self.host}/{const.api_auth}'
         self.headers = {
             'Accept': 'application/json',
             'Content-type': 'application/json'
@@ -38,7 +43,6 @@ class PHAuth:
         # hash password
         pwhash = sha256(sha256(self.password.encode('UTF-8')).hexdigest().encode(
             'ascii')).hexdigest().encode('ascii')
-
 
         # Get Challenge
         try:

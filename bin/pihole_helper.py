@@ -5,7 +5,7 @@ import time
 import pihole_constants as const
 
 
-def sendit(pihole_host, event_name, helper, endpoint=const.api_system, params=None, sid=None, port=None):
+def sendit(pihole_host, event_name, helper, endpoint=None, params=None, sid=None, port=None):
     """Send Request
 
     :param pihole_host: Pihole server to query
