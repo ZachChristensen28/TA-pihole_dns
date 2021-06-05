@@ -1,7 +1,4 @@
-[pihole_filters://<name>]
-pihole_account =
-
-[pihole_system://<name>]
+[pihole_version://<name>]
 pihole_account =
 
 [pihole_domains://<name>]

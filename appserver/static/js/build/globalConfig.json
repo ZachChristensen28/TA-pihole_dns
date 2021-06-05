@@ -296,8 +296,8 @@
             },
             "services": [
                 {
-                    "name": "pihole_system",
-                    "title": "Pihole System",
+                    "name": "pihole_version",
+                    "title": "Pihole Version",
                     "entity": [
                         {
                             "field": "name",
