@@ -53,7 +53,7 @@ model = RestModel(fields, name=None)
 
 
 endpoint = DataInputModel(
-    'pihole_version',
+    'pihole_ftl_dbinfo',
     model,
 )
 

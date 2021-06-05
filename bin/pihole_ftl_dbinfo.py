@@ -4,7 +4,7 @@ import sys
 import json
 import modinput_wrapper.base_modinput
 from solnlib.packages.splunklib import modularinput as smi
-import input_module_pihole_version as input_module
+import input_module_pihole_ftl_dbinfo as input_module
 
 bin_dir = os.path.basename(__file__)
 
@@ -15,20 +15,20 @@ bin_dir = os.path.basename(__file__)
 '''
 
 
-class ModInputPiholeVersion(modinput_wrapper.base_modinput.BaseModInput):
+class ModInputPiholeFTLDBInfo(modinput_wrapper.base_modinput.BaseModInput):
 
     def __init__(self):
         if 'use_single_instance_mode' in dir(input_module):
             use_single_instance = input_module.use_single_instance_mode()
         else:
             use_single_instance = False
-        super(ModInputPiholeVersion, self).__init__("ta_pihole_dns", "pihole_version", use_single_instance)
+        super(ModInputPiholeFTLDBInfo, self).__init__("ta_pihole_dns", "pihole_ftl_dbinfo", use_single_instance)
         self.global_checkbox_fields = None
 
     def get_scheme(self):
         """overloaded splunklib modularinput method"""
-        scheme = super(ModInputPiholeVersion, self).get_scheme()
-        scheme.title = "Pihole Version"
+        scheme = super(ModInputPiholeFTLDBInfo, self).get_scheme()
+        scheme.title = "Pihole FTL DBInfo"
         scheme.description = "Go to the add-on\'s configuration UI and configure modular inputs under the Inputs menu."
         scheme.use_external_validation = True
         scheme.streaming_mode_xml = True
@@ -82,5 +82,5 @@ class ModInputPiholeVersion(modinput_wrapper.base_modinput.BaseModInput):
 
 
 if __name__ == "__main__":
-    exitcode = ModInputPiholeVersion().run(sys.argv)
+    exitcode = ModInputPiholeFTLDBInfo().run(sys.argv)
     sys.exit(exitcode)
