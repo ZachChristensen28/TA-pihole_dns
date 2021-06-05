@@ -12,3 +12,6 @@ pihole_account =
 
 [pihole_clients://<name>]
 pihole_account =
+
+[pihole_groups://<name>]
+pihole_account =
