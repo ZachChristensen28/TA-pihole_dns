@@ -13,9 +13,19 @@ The Pi-hole Add-on allows Splunk data administrators to map the Pi-Hole® DNS se
 ## Release Notes
 
 ```TEXT
-Version 1.3.1
+Version 
 
-- Fixed typo in python script causing errors #28
+- Adding new modular inputs to support v6 API
+    - Get Domains (List all Domains that have been allowed/denied)
+    - Get database stats
+    - Get group information
+    - Get client information
+    - Get DNS cache information
+    - Get System stats
+    - Get block lists
+- Removed python2 libraries
+- Removed legacy API inputs
+- Removed legacy list scripted input
 ```
 
 ## Navigation
