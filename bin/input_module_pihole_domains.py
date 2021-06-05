@@ -25,13 +25,17 @@ def collect_events(helper, ew):
 
     # Authenticate
     s = PHAuth(pihole_host, api_key, helper)
-    sid = s.start_session()
-    if not sid:
+    s.start_session()
+
+    if not s.sid:
         return False
 
     # Collect domain information
     event_name = 'domain_collection'
-    response = sendit(pihole_host, event_name, helper, sid=sid, port=const.p_port)
+    response = sendit(pihole_host, event_name, helper, endpoint=const.api_domain, sid=s.sid, port=const.p_port)
+
+    # log out of current session
+    s.logout()
 
     if response:
         for item in response['domains']:
@@ -42,3 +46,6 @@ def collect_events(helper, ew):
 
         # Checkpointer
         checkpointer(pihole_host, event_name, helper, set_checkpoint=True)
+        return True
+    else:
+        return False
