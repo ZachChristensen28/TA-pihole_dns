@@ -15,7 +15,7 @@ def validate_input(helper, definition):
 def collect_events(helper, ew):
     # Get Credentials
     account = helper.get_arg('pihole_account')
-    api_key = account['api_key']
+    api_pass = account['api_pass']
     pihole_host = account['pihole_host']
     if account['api_port']:
         api_port = account['api_port']
@@ -28,7 +28,7 @@ def collect_events(helper, ew):
     helper.log_info(f'log_level="{log_level}"')
 
     # Authenticate
-    s = PHAuth(pihole_host, api_key, helper, port=api_port)
+    s = PHAuth(pihole_host, api_pass, helper, port=api_port)
     s.start_session()
 
     if not s.sid:
@@ -36,7 +36,8 @@ def collect_events(helper, ew):
 
     # Collect domain information
     event_name = 'domain_collection'
-    response = sendit(pihole_host, event_name, helper, endpoint=const.api_domain, sid=s.sid, port=api_port)
+    response = sendit(pihole_host, event_name, helper,
+                      endpoint=const.api_domain, sid=s.sid, port=api_port)
 
     # log out of current session
     s.logout()

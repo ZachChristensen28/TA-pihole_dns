@@ -71,18 +71,18 @@
                             ]
                         },
                         {
-                            "field": "api_key",
-                            "label": "API Key",
+                            "field": "api_pass",
+                            "label": "API Passphrase",
                             "type": "text",
                             "encrypted": true,
                             "required": true,
-                            "help": "Enter the API Key for this account.",
+                            "help": "Enter the API Passphrase for this account.",
                             "validators": [
                                 {
                                     "type": "string",
                                     "minLength": 1,
                                     "maxLength": 8192,
-                                    "errorMsg": "Length of API Key should be between 1 and 8192"
+                                    "errorMsg": "Length of API Passphrase should be between 1 and 8192"
                                 }
                             ]
                         },

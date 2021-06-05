@@ -25,7 +25,7 @@ fields = [
         )
     ),
     field.RestField(
-        'api_key',
+        'api_pass',
         required=True,
         encrypted=True,
         default=None,
