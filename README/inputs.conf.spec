@@ -6,3 +6,6 @@ pihole_account =
 
 [pihole_ftl_dbinfo://<name>]
 pihole_account =
+
+[pihole_lists://<name>]
+pihole_account =
