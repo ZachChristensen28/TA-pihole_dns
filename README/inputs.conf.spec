@@ -9,3 +9,6 @@ pihole_account =
 
 [pihole_lists://<name>]
 pihole_account =
+
+[pihole_clients://<name>]
+pihole_account =

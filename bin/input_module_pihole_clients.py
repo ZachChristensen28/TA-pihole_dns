@@ -35,15 +35,15 @@ def collect_events(helper, ew):
         return False
 
     # Collect domain information
-    event_name = 'domains'
+    event_name = 'clients'
     response = sendit(pihole_host, event_name, helper,
-                      endpoint=const.api_domain, sid=s.sid, port=api_port)
+                      endpoint=const.api_clients, sid=s.sid, port=api_port)
 
     # log out of current session
     s.logout()
 
     if response:
-        for item in response['domains']:
+        for item in response['clients']:
             # Create Splunk Event
             splunk_event = helper.new_event(source=helper.get_input_type(), index=helper.get_output_index(
             ), sourcetype=helper.get_sourcetype(), data=json.dumps(item), host=pihole_host)
