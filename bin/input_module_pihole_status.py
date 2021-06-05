@@ -26,7 +26,7 @@ def collect_events(helper, ew):
     helper.log_info(f'log_level="{log_level}"')
 
     # Start..
-    event_name = 'status'
+    event_name = 'pihole_status'
     response = sendit(pihole_host, event_name, helper,
                       endpoint=const.api_status, port=api_port)
 

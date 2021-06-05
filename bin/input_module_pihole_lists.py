@@ -35,7 +35,7 @@ def collect_events(helper, ew):
         return False
 
     # Collect domain information
-    event_name = 'lists'
+    event_name = 'pihole_lists'
     response = sendit(pihole_host, event_name, helper,
                       endpoint=const.api_lists, sid=s.sid, port=api_port)
 
