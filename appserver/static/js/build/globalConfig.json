@@ -2,7 +2,7 @@
     "meta": {
         "name": "TA-pihole_dns",
         "displayName": "Pihole DNS Add-on",
-        "version": "1.4.0",
+        "version": "2.0.0",
         "apiVersion": "3.0.0",
         "restRoot": "TA_pihole_dns"
     },
