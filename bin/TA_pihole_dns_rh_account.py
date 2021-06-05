@@ -33,6 +33,16 @@ fields = [
             min_len=1,
             max_len=8192,
         )
+    ),
+    field.RestField(
+        'api_port',
+        required=False,
+        encrypted=False,
+        default=None,
+        validator=validator.Number(
+            min_val=1,
+            max_val=65535,
+        )
     )
 
 ]

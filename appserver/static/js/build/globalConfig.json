@@ -1,8 +1,8 @@
 {
     "meta": {
         "name": "TA-pihole_dns",
-        "displayName": "pihole_dns",
-        "version": "1.3.0",
+        "displayName": "Pihole DNS Add-on",
+        "version": "1.4.0",
         "apiVersion": "3.0.0",
         "restRoot": "TA_pihole_dns"
     },
@@ -83,6 +83,26 @@
                                     "minLength": 1,
                                     "maxLength": 8192,
                                     "errorMsg": "Length of API Key should be between 1 and 8192"
+                                }
+                            ]
+                        },
+                        {
+                            "field": "api_port",
+                            "label": "Port",
+                            "type": "text",
+                            "required": false,
+                            "help": "(Optional) Enter the Port number used for the API.",
+                            "options": {
+                                "placeholder": "8080"
+                            },
+                            "validators": [
+                                {
+                                    "type": "number",
+                                    "range": [
+                                        1,
+                                        65535
+                                    ],
+                                    "errorMsg": "Select a valid port number"
                                 }
                             ]
                         }
