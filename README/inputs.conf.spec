@@ -18,3 +18,6 @@ pihole_account =
 
 [pihole_status://<name>]
 pihole_account =
+
+[pihole_cache://<name>]
+pihole_account =

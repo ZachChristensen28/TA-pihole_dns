@@ -3,7 +3,7 @@ h_proto = 'http'
 
 # endpoints
 api_auth = 'api/auth'
-api_cache = 'api/dns/cacheinfo'
+api_cache = 'api/dns/cache'
 api_clients = 'api/clients'
 api_domain = 'api/domains'
 api_ftl_dbinfo = 'api/ftl/dbinfo'
