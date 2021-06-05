@@ -51,7 +51,8 @@
     "pihole_ftl_dbinfo",
     "pihole_lists",
     "pihole_clients",
-    "pihole_groups"
+    "pihole_groups",
+    "pihole_status"
   ],
   "inputGroups": null,
   "incompatibleApps": null,
