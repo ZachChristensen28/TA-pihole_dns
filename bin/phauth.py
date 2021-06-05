@@ -42,7 +42,7 @@ class PHAuth:
 
         # Get Challenge
         try:
-            self.helper.log_info(f'event_name="{event_name}", msg="retrieving auth challenge"')
+            self.helper.log_info(f'event_name="{event_name}", msg="retrieving auth challenge", hostname="{self.host}"')
             r = self.helper.send_http_request(self.url, 'get', headers=self.headers, use_proxy=True)
         except Exception as e:
             self.helper.log_error(
@@ -72,7 +72,7 @@ class PHAuth:
             payload = {
                 'response': response
             }
-            self.helper.log_info(f'event_name="{event_name}", msg="sending challenge response"')
+            self.helper.log_info(f'event_name="{event_name}", msg="sending challenge response", hostname="{self.host}"')
             s = self.helper.send_http_request(
                 self.url, 'post', headers=self.headers, payload=json.dumps(payload), use_proxy=True)
 
@@ -86,11 +86,11 @@ class PHAuth:
             return False
 
         if s.status_code == 200:
-            self.helper.log_info(f'event_name="{event_name}", msg="successfully created session", action="success"')
+            self.helper.log_info(f'event_name="{event_name}", msg="successfully created session", action="success", hostname="{self.host}"')
             session = s.json()
 
             self.helper.log_info(f'event_name="{event_name}", msg="session status", isValid='
-                                 f'"{session["session"]["valid"]}"')
+                                 f'"{session["session"]["valid"]}", hostname="{self.host}"')
             if session['session']['valid']:
                 self.sid = session['session']['sid']
             else:
@@ -106,7 +106,7 @@ class PHAuth:
     def logout(self):
         """Logout of Session"""
         event_name = 'authentication:logout'
-        self.helper.log_info(f'event_name="{event_name}", msg="Logging out of session"')
+        self.helper.log_info(f'event_name="{event_name}", msg="Logging out of session", hostname="{self.host}"')
         self.headers['sid'] = self.sid
         try:
             l = self.helper.send_http_request(
@@ -121,7 +121,7 @@ class PHAuth:
             return False
 
         if l.status_code == 410:
-            self.helper.log_info(f'event_name="{event_name}", msg="Logging out successful", action="success"')
+            self.helper.log_info(f'event_name="{event_name}", msg="Logging out successful", action="success", hostname="{self.host}"')
             return True
         else:
             self.helper.log_error(
