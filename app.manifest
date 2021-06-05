@@ -48,7 +48,8 @@
   "tasks": [
     "pihole_domains",
     "pihole_version",
-    "pihole_ftl_dbinfo"
+    "pihole_ftl_dbinfo",
+    "pihole_lists"
   ],
   "inputGroups": null,
   "incompatibleApps": null,
