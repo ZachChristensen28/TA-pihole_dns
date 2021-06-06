@@ -18,9 +18,9 @@ fields = [
         'interval',
         required=True,
         encrypted=False,
-        default='7200',
+        default='1 */4 * * *',
         validator=validator.Pattern(
-            regex=r"""^[3-9][0-9][0-9]$|^[1-9][0-9][0-9][0-9]\d*$""",
+            regex=r"""(?:(?:^[3-9][0-9][0-9]$|^[1-9][0-9][0-9][0-9]\d*$)|(?:^\S+(?: \S+){4}))""",
         )
     ),
     field.RestField(
@@ -49,7 +49,6 @@ fields = [
 
 ]
 model = RestModel(fields, name=None)
-
 
 
 endpoint = DataInputModel(
