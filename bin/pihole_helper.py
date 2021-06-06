@@ -90,6 +90,11 @@ def checkpointer(pihole_host, event_name, helper, set_checkpoint=False):
     """
     # Get Interval
     interval = int(helper.get_arg('interval'))
+
+    # Check for Cron Schedule
+    if type(interval) != int:
+        return True
+
     current_time = int(time.time())
     check_time = current_time - interval + 60
     key = f'{pihole_host}_{event_name}'
