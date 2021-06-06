@@ -89,11 +89,15 @@ def checkpointer(pihole_host, event_name, helper, set_checkpoint=False):
     :return: bool
     """
     # Get Interval
-    interval = int(helper.get_arg('interval'))
+    interval = helper.get_arg('interval')
 
     # Check for Cron Schedule
     if type(interval) != int:
+        helper.log_info(
+            f'msg="Cron Schedule Found", hostname="{pihole_host}", event_name="{event_name}"')
         return True
+    else:
+        interval = int(interval)
 
     current_time = int(time.time())
     check_time = current_time - interval + 60
