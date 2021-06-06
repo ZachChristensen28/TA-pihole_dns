@@ -23,7 +23,7 @@ Version 2.0.0
     - Get DNS cache information
     - Get System stats
     - Get block lists
-- Adding ability to set interval with a cron schedule
+- Adding ability to set interval for modular inputs with a cron schedule
 - Removed python2 libraries
 - Removed legacy API inputs
 - Removed legacy list scripted input
