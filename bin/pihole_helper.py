@@ -91,10 +91,12 @@ def checkpointer(pihole_host, event_name, helper, set_checkpoint=False):
     # Get Interval
     interval = helper.get_arg('interval')
 
-    # Check for Cron Schedule
-    if type(interval) != int:
+    # Check for integer
+    try:
+        int(interval)
+    except ValueError:
         helper.log_info(
-            f'msg="Cron schedule found, checkpointer not needed", hostname="{pihole_host}", event_name="{event_name}"')
+            f'msg="Not an integer - defaulting to cron schedule", hostname="{pihole_host}", event_name="{event_name}"')
         return True
     else:
         interval = int(interval)
