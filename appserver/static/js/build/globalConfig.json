@@ -323,6 +323,7 @@
                             "field": "interval",
                             "label": "Interval",
                             "type": "text",
+                            "defaultValue": "1 */4 * * *",
                             "required": true,
                             "help": "Time interval of input in seconds, minimum 300s (5 minutes) or a valid cron schedule",
                             "options": {
@@ -397,6 +398,7 @@
                             "field": "interval",
                             "label": "Interval",
                             "type": "text",
+                            "defaultValue": "2 */4 * * *",
                             "required": true,
                             "help": "Time interval of input in seconds, minimum 300s (5 minutes) or a valid cron schedule",
                             "options": {
@@ -470,6 +472,7 @@
                             "field": "interval",
                             "label": "Interval",
                             "type": "text",
+                            "defaultValue": "3 */4 * * *",
                             "required": true,
                             "help": "Time interval of input in seconds, minimum 300s (5 minutes) or a valid cron schedule",
                             "options": {
@@ -543,6 +546,7 @@
                             "field": "interval",
                             "label": "Interval",
                             "type": "text",
+                            "defaultValue": "4 */4 * * *",
                             "required": true,
                             "help": "Time interval of input in seconds, minimum 300s (5 minutes) or a valid cron schedule",
                             "options": {
@@ -616,6 +620,7 @@
                             "field": "interval",
                             "label": "Interval",
                             "type": "text",
+                            "defaultValue": "6 */4 * * *",
                             "required": true,
                             "help": "Time interval of input in seconds, minimum 300s (5 minutes) or a valid cron schedule",
                             "options": {
@@ -689,6 +694,7 @@
                             "field": "interval",
                             "label": "Interval",
                             "type": "text",
+                            "defaultValue": "7 */4 * * *",
                             "required": true,
                             "help": "Time interval of input in seconds, minimum 300s (5 minutes) or a valid cron schedule",
                             "options": {
@@ -762,6 +768,7 @@
                             "field": "interval",
                             "label": "Interval",
                             "type": "text",
+                            "defaultValue": "8 */4 * * *",
                             "required": true,
                             "help": "Time interval of input in seconds, minimum 300s (5 minutes) or a valid cron schedule",
                             "options": {
@@ -835,6 +842,7 @@
                             "field": "interval",
                             "label": "Interval",
                             "type": "text",
+                            "defaultValue": "9 */4 * * *",
                             "required": true,
                             "help": "Time interval of input in seconds, minimum 300s (5 minutes) or a valid cron schedule",
                             "options": {
