@@ -27,7 +27,9 @@ Version 2.0.0
 - Removed python2 libraries
 - Removed legacy API inputs
 - Removed legacy list scripted input
+- Updating extractions for dnssec queries
 ```
+
 ## Documentation
 
 Find full documentation for installing this add-on at http://splunk-pihole-ta-documentation.rtfd.io/
