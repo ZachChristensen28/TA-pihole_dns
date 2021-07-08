@@ -5,27 +5,21 @@
 
 Info | Description
 ------|----------
-Version | 1.3.0 - See on [Splunkbase](https://splunkbase.splunk.com/app/4505/)
-Vendor Product Version | [Pi-hole® v5.3.x, FTL 5.8.x](https://pi-hole.net/)
+Version | 1.3.1 - See on [Splunkbase](https://splunkbase.splunk.com/app/4505/)
+Vendor Product Version | [Pi-hole® v5.x, FTL 5.x](https://pi-hole.net/)
 Add-on has a web UI | Yes, this Add-on contains a configuration page for the Modular Input.
 
 The Pi-hole Add-on allows Splunk data administrators to map the Pi-Hole® DNS server events to the [CIM](https://docs.splunk.com/Splexicon:CommonInformationModel) enabling the data to be used with other Splunk Apps, such as Splunk® App for Enterprise Security.
 
 ## Release Notes
 
-```TEXT
-Version 1.3.0
+```text
+Version 1.3.1
 
-NOTE: This update changes the way the modular input works. If existing modular inputs were setup prior to this version, action must be taken to ensure those inputs continue to function correctly. See Updating to new modular inputs below or at https://github.com/ZachChristensen28/TA-pihole_dns/wiki/Updating-to-new-modular-Inputs.
+NOTE: v1.3.0 of this add-on changed the way the modular input works. If existing modular inputs were setup prior to version v1.3.0, action must be taken to ensure those inputs continue to function correctly. See the docs for updating to new modular inputs (https://splunk-pihole-ta-documentation.readthedocs.io/en/latest/getting-started/configure-inputs/configure-modinput/#updating-to-new-modular-inputs)
 
-New
-- Added ability to pull regex and domain filters created in the Pi-hole server.
-
-Updated
-- Updated the Modular input to make more flexible.
-
-Deprecated
-- With the upcoming version of Pi-hole® 6.0, the scripted input "pihole_lists.sh" will be deprecated. This information will be available through the REST API in the upcoming release.
+- fixed issue causing internal logs to produce a checkpointer not defined error #28
+- updated field extractions to include dnssec query events introduced in new Pi-Hole version (Core: v5.4, FTL v5.9).
 ```
 
 ## Documentation

@@ -48,4 +48,4 @@ def collect_events(helper, ew):
     ew.write_event(splunk_event)
 
     # Checkpointer
-    checkpinter(pihole_host, event_name, helper, set_checkpoint=True)
+    checkpointer(pihole_host, event_name, helper, set_checkpoint=True)
