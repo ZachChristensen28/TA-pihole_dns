@@ -46,8 +46,8 @@
   },
   "dependencies": null,
   "tasks": [
-    "input://pihole_system",
-    "input://pihole_filters"
+    "pihole_system",
+    "pihole_filters"
   ],
   "inputGroups": null,
   "incompatibleApps": null,
