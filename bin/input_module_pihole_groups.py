@@ -17,10 +17,6 @@ def collect_events(helper, ew):
     account = helper.get_arg('pihole_account')
     api_pass = account['api_pass']
     pihole_host = account['pihole_host']
-    if account['api_port']:
-        api_port = account['api_port']
-    else:
-        api_port = None
 
     # Event Name
     event_name = 'pihole_groups'
@@ -31,7 +27,7 @@ def collect_events(helper, ew):
     helper.log_info(f'log_level="{log_level}"')
 
     # Authenticate
-    s = PHAuth(pihole_host, api_pass, helper, port=api_port)
+    s = PHAuth(pihole_host, api_pass, helper)
     s.start_session(event_name)
 
     if not s.sid:
@@ -39,7 +35,7 @@ def collect_events(helper, ew):
 
     # Collect domain information
     response = sendit(pihole_host, event_name, helper,
-                      endpoint=const.api_groups, sid=s.sid, port=api_port)
+                      endpoint=const.api_groups, sid=s.sid)
 
     # log out of current session
     s.logout(event_name)

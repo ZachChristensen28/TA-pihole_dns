@@ -15,10 +15,6 @@ def collect_events(helper, ew):
     # Get Credentials
     account = helper.get_arg('pihole_account')
     pihole_host = account['pihole_host']
-    if account['api_port']:
-        api_port = account['api_port']
-    else:
-        api_port = None
 
     # Get Log Level
     log_level = helper.get_log_level()
@@ -28,7 +24,7 @@ def collect_events(helper, ew):
     # Start..
     event_name = 'pihole_ftl_dbinfo'
     response = sendit(pihole_host, event_name, helper,
-                      endpoint=const.api_ftl_dbinfo, port=api_port)
+                      endpoint=const.api_ftl_dbinfo)
 
     if not response:
         return False

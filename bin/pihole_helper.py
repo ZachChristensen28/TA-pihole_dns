@@ -5,7 +5,7 @@ import time
 import pihole_constants as const
 
 
-def sendit(pihole_host, event_name, helper, endpoint=None, params=None, sid=None, port=None):
+def sendit(pihole_host, event_name, helper, endpoint=None, params=None, sid=None):
     """Send Request
 
     :param pihole_host: Pihole server to query
@@ -14,7 +14,6 @@ def sendit(pihole_host, event_name, helper, endpoint=None, params=None, sid=None
     :param endpoint: API endpoint
     :param params: Parameters for request
     :param sid: Session ID
-    :param port: Port to use for call
     :return: response
     """
     # Skip run if too close to previous run interval
@@ -35,6 +34,14 @@ def sendit(pihole_host, event_name, helper, endpoint=None, params=None, sid=None
             'Accept': 'application/json',
             'Content-type': 'application/json'
         }
+
+    port = None
+    try:
+        helper.get_arg('account')['api_port']
+    except KeyError:
+        helper.log_info(f'msg="API port not defined", hostname="{pihole_host}"')
+    else:
+        port = helper.get_arg('account')['api_port']
 
     if port:
         dest = f'{pihole_host}:{port}'
