@@ -18,8 +18,7 @@ Version 1.3.2
 
 NOTE: v1.3.0 of this add-on changed the way the modular input works. If existing modular inputs were setup prior to version v1.3.0, action must be taken to ensure those inputs continue to function correctly. See the docs for updating to new modular inputs (https://splunk-pihole-ta-documentation.readthedocs.io/en/latest/getting-started/configure-inputs/configure-modinput/#updating-to-new-modular-inputs)
 
-- fixed issue causing internal logs to produce a checkpointer not defined error #28
-- updated field extractions to include dnssec query events introduced in new Pi-Hole version (Core: v5.4, FTL v5.9).
+- adding dest field to map to CIM
 ```
 
 ## Documentation
