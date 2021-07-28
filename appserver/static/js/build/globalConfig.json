@@ -26,7 +26,7 @@
                                 "label": "Host"
                             },
                             {
-                                "field": "pihole_port",
+                                "field": "api_port",
                                 "label": "API port"
                             }
                         ],
