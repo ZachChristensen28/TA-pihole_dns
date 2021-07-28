@@ -1,6 +1,5 @@
 # encoding = utf-8
 
-from _typeshed import NoneType
 from hashlib import sha256
 import pihole_constants as const
 import json
@@ -23,7 +22,7 @@ class PHAuth:
         self.port = None
         try:
             self.account['api_port']
-        except KeyError or NoneType:
+        except KeyError:
             self.helper.log_info(
                 f'msg="API port not defined", hostname="{self.host}"')
         else:
