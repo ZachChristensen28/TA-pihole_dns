@@ -48,7 +48,7 @@
   "tasks": [
     "pihole_domains",
     "pihole_version",
-    "pihole_ftl_dbinfo",
+    "pihole_dbinfo",
     "pihole_lists",
     "pihole_clients",
     "pihole_groups",

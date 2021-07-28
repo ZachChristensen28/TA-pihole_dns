@@ -24,7 +24,7 @@ Version 2.0.0
     - Get System stats
     - Get block lists
 - Adding ability to set interval for modular inputs with a cron schedule
-- Removed python2 libraries
+- Updated AoB version
 - Removed legacy API inputs
 - Removed legacy list scripted input
 - Updating extractions for dnssec queries

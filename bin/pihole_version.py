@@ -1,9 +1,15 @@
 import ta_pihole_dns_declare
+
 import os
 import sys
+import time
+import datetime
 import json
+
 import modinput_wrapper.base_modinput
-from solnlib.packages.splunklib import modularinput as smi
+from splunklib import modularinput as smi
+
+
 import input_module_pihole_version as input_module
 
 bin_dir = os.path.basename(__file__)
@@ -15,21 +21,23 @@ bin_dir = os.path.basename(__file__)
 '''
 
 
-class ModInputPiholeVersion(modinput_wrapper.base_modinput.BaseModInput):
+class ModInputpihole_version(modinput_wrapper.base_modinput.BaseModInput):
 
     def __init__(self):
         if 'use_single_instance_mode' in dir(input_module):
             use_single_instance = input_module.use_single_instance_mode()
         else:
             use_single_instance = False
-        super(ModInputPiholeVersion, self).__init__("ta_pihole_dns", "pihole_version", use_single_instance)
+        super(ModInputpihole_version, self).__init__(
+            "ta_pihole_dns", "pihole_version", use_single_instance)
         self.global_checkbox_fields = None
 
     def get_scheme(self):
         """overloaded splunklib modularinput method"""
-        scheme = super(ModInputPiholeVersion, self).get_scheme()
-        scheme.title = "Pihole Version"
-        scheme.description = "Go to the add-on\'s configuration UI and configure modular inputs under the Inputs menu."
+        scheme = super(ModInputpihole_version, self).get_scheme()
+        scheme.title = ("Version")
+        scheme.description = (
+            "Go to the add-on\'s configuration UI and configure modular inputs under the Inputs menu.")
         scheme.use_external_validation = True
         scheme.streaming_mode_xml = True
 
@@ -41,8 +49,8 @@ class ModInputPiholeVersion(modinput_wrapper.base_modinput.BaseModInput):
         For customized inputs, hard code the arguments here to hide argument detail from users.
         For other input types, arguments should be get from input_module. Defining new input types could be easier.
         """
-        scheme.add_argument(smi.Argument("pihole_account", title="Pihole Account",
-                                         description="Choose the Pihole Account to use.",
+        scheme.add_argument(smi.Argument("pihole_account", title="Account",
+                                         description="",
                                          required_on_create=True,
                                          required_on_edit=False))
         return scheme
@@ -59,7 +67,8 @@ class ModInputPiholeVersion(modinput_wrapper.base_modinput.BaseModInput):
         input_module.collect_events(self, ew)
 
     def get_account_fields(self):
-        account_fields = ["pihole_account"]
+        account_fields = []
+        account_fields.append("pihole_account")
         return account_fields
 
     def get_checkbox_fields(self):
@@ -68,7 +77,8 @@ class ModInputPiholeVersion(modinput_wrapper.base_modinput.BaseModInput):
 
     def get_global_checkbox_fields(self):
         if self.global_checkbox_fields is None:
-            checkbox_name_file = os.path.join(bin_dir, 'global_checkbox_param.json')
+            checkbox_name_file = os.path.join(
+                bin_dir, 'global_checkbox_param.json')
             try:
                 if os.path.isfile(checkbox_name_file):
                     with open(checkbox_name_file, 'r') as fp:
@@ -76,11 +86,12 @@ class ModInputPiholeVersion(modinput_wrapper.base_modinput.BaseModInput):
                 else:
                     self.global_checkbox_fields = []
             except Exception as e:
-                self.log_error('Get exception when loading global checkbox parameter names. ' + str(e))
+                self.log_error(
+                    'Get exception when loading global checkbox parameter names. ' + str(e))
                 self.global_checkbox_fields = []
         return self.global_checkbox_fields
 
 
 if __name__ == "__main__":
-    exitcode = ModInputPiholeVersion().run(sys.argv)
+    exitcode = ModInputpihole_version().run(sys.argv)
     sys.exit(exitcode)

@@ -1,9 +1,15 @@
 import ta_pihole_dns_declare
+
 import os
 import sys
+import time
+import datetime
 import json
+
 import modinput_wrapper.base_modinput
-from solnlib.packages.splunklib import modularinput as smi
+from splunklib import modularinput as smi
+
+
 import input_module_pihole_cache as input_module
 
 bin_dir = os.path.basename(__file__)
@@ -15,21 +21,21 @@ bin_dir = os.path.basename(__file__)
 '''
 
 
-class ModInputPiholeCache(modinput_wrapper.base_modinput.BaseModInput):
+class ModInputpihole_cache(modinput_wrapper.base_modinput.BaseModInput):
 
     def __init__(self):
         if 'use_single_instance_mode' in dir(input_module):
             use_single_instance = input_module.use_single_instance_mode()
         else:
             use_single_instance = False
-        super(ModInputPiholeCache, self).__init__(
+        super(ModInputpihole_cache, self).__init__(
             "ta_pihole_dns", "pihole_cache", use_single_instance)
         self.global_checkbox_fields = None
 
     def get_scheme(self):
         """overloaded splunklib modularinput method"""
-        scheme = super(ModInputPiholeCache, self).get_scheme()
-        scheme.title = "Pihole Cache"
+        scheme = super(ModInputpihole_cache, self).get_scheme()
+        scheme.title = ("DNS cache information")
         scheme.description = (
             "Go to the add-on\'s configuration UI and configure modular inputs under the Inputs menu.")
         scheme.use_external_validation = True
@@ -43,8 +49,8 @@ class ModInputPiholeCache(modinput_wrapper.base_modinput.BaseModInput):
         For customized inputs, hard code the arguments here to hide argument detail from users.
         For other input types, arguments should be get from input_module. Defining new input types could be easier.
         """
-        scheme.add_argument(smi.Argument("pihole_account", title="Pihole Account",
-                                         description="Choose the Pihole Account to use.",
+        scheme.add_argument(smi.Argument("pihole_account", title="Account",
+                                         description="",
                                          required_on_create=True,
                                          required_on_edit=False))
         return scheme
@@ -61,7 +67,8 @@ class ModInputPiholeCache(modinput_wrapper.base_modinput.BaseModInput):
         input_module.collect_events(self, ew)
 
     def get_account_fields(self):
-        account_fields = ["pihole_account"]
+        account_fields = []
+        account_fields.append("pihole_account")
         return account_fields
 
     def get_checkbox_fields(self):
@@ -86,5 +93,5 @@ class ModInputPiholeCache(modinput_wrapper.base_modinput.BaseModInput):
 
 
 if __name__ == "__main__":
-    exitcode = ModInputPiholeCache().run(sys.argv)
+    exitcode = ModInputpihole_cache().run(sys.argv)
     sys.exit(exitcode)

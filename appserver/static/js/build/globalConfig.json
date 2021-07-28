@@ -1,10 +1,11 @@
 {
     "meta": {
         "name": "TA-pihole_dns",
-        "displayName": "Pihole DNS Add-on",
-        "version": "2.0.0",
+        "displayName": "TA-pihole_dns",
+        "version": "1.0.0",
         "apiVersion": "3.0.0",
-        "restRoot": "TA_pihole_dns"
+        "restRoot": "TA_pihole_dns",
+        "schemaVersion": "0.0.2"
     },
     "pages": {
         "configuration": {
@@ -57,7 +58,7 @@
                             "label": "Pi-hole Host",
                             "type": "text",
                             "required": true,
-                            "help": "Enter the FQDN/IP for the Pi-hole Server.",
+                            "help": "Enter the FQDN/IP for the Pi-hole® Server.",
                             "options": {
                                 "placeholder": "IP/FQDN"
                             },
@@ -88,12 +89,12 @@
                         },
                         {
                             "field": "api_port",
-                            "label": "Port",
+                            "label": "API Port",
                             "type": "text",
                             "required": false,
                             "help": "(Optional) Enter the Port number used for the API.",
                             "options": {
-                                "placeholder": "8080"
+                                "placeholder": "Optional"
                             },
                             "validators": [
                                 {
@@ -284,7 +285,7 @@
                     },
                     {
                         "field": "pihole_account",
-                        "label": "Pi-hole Account"
+                        "label": "Account"
                     }
                 ],
                 "actions": [
@@ -297,7 +298,7 @@
             "services": [
                 {
                     "name": "pihole_version",
-                    "title": "Pihole Version",
+                    "title": "Version",
                     "entity": [
                         {
                             "field": "name",
@@ -344,8 +345,8 @@
                             "defaultValue": "default",
                             "options": {
                                 "endpointUrl": "data/indexes",
-                                "blackList": "^_.*$",
-                                "createSearchChoice": true
+                                "createSearchChoice": true,
+                                "denyList": "^_.*$"
                             },
                             "required": true,
                             "validators": [
@@ -359,20 +360,19 @@
                         },
                         {
                             "field": "pihole_account",
-                            "label": "Pihole Account",
-                            "help": "Choose the Pihole Account to use.",
+                            "label": "Account",
+                            "help": "",
                             "required": true,
                             "type": "singleSelect",
                             "options": {
-                                "referenceName": "account",
-                                "placeholder": "Select the Pihole Account to use."
+                                "referenceName": "account"
                             }
                         }
                     ]
                 },
                 {
                     "name": "pihole_domains",
-                    "title": "Pihole Domains",
+                    "title": "Domains",
                     "entity": [
                         {
                             "field": "name",
@@ -419,8 +419,8 @@
                             "defaultValue": "default",
                             "options": {
                                 "endpointUrl": "data/indexes",
-                                "blackList": "^_.*$",
-                                "createSearchChoice": true
+                                "createSearchChoice": true,
+                                "denyList": "^_.*$"
                             },
                             "required": true,
                             "validators": [
@@ -434,7 +434,7 @@
                         },
                         {
                             "field": "pihole_account",
-                            "label": "Pi-hole Account",
+                            "label": "Account",
                             "help": "",
                             "required": true,
                             "type": "singleSelect",
@@ -445,8 +445,8 @@
                     ]
                 },
                 {
-                    "name": "pihole_ftl_dbinfo",
-                    "title": "Pihole FTL DBInfo",
+                    "name": "pihole_dbinfo",
+                    "title": "Database information",
                     "entity": [
                         {
                             "field": "name",
@@ -493,8 +493,8 @@
                             "defaultValue": "default",
                             "options": {
                                 "endpointUrl": "data/indexes",
-                                "blackList": "^_.*$",
-                                "createSearchChoice": true
+                                "createSearchChoice": true,
+                                "denyList": "^_.*$"
                             },
                             "required": true,
                             "validators": [
@@ -508,7 +508,7 @@
                         },
                         {
                             "field": "pihole_account",
-                            "label": "Pi-hole Account",
+                            "label": "Account",
                             "help": "",
                             "required": true,
                             "type": "singleSelect",
@@ -520,7 +520,7 @@
                 },
                 {
                     "name": "pihole_lists",
-                    "title": "Pihole Lists",
+                    "title": "Lists",
                     "entity": [
                         {
                             "field": "name",
@@ -567,8 +567,8 @@
                             "defaultValue": "default",
                             "options": {
                                 "endpointUrl": "data/indexes",
-                                "blackList": "^_.*$",
-                                "createSearchChoice": true
+                                "createSearchChoice": true,
+                                "denyList": "^_.*$"
                             },
                             "required": true,
                             "validators": [
@@ -582,7 +582,7 @@
                         },
                         {
                             "field": "pihole_account",
-                            "label": "Pi-hole Account",
+                            "label": "Account",
                             "help": "",
                             "required": true,
                             "type": "singleSelect",
@@ -594,7 +594,7 @@
                 },
                 {
                     "name": "pihole_clients",
-                    "title": "Pihole Clients",
+                    "title": "Clients",
                     "entity": [
                         {
                             "field": "name",
@@ -641,8 +641,8 @@
                             "defaultValue": "default",
                             "options": {
                                 "endpointUrl": "data/indexes",
-                                "blackList": "^_.*$",
-                                "createSearchChoice": true
+                                "createSearchChoice": true,
+                                "denyList": "^_.*$"
                             },
                             "required": true,
                             "validators": [
@@ -656,7 +656,7 @@
                         },
                         {
                             "field": "pihole_account",
-                            "label": "Pi-hole Account",
+                            "label": "Account",
                             "help": "",
                             "required": true,
                             "type": "singleSelect",
@@ -668,7 +668,7 @@
                 },
                 {
                     "name": "pihole_groups",
-                    "title": "Pihole Groups",
+                    "title": "Groups",
                     "entity": [
                         {
                             "field": "name",
@@ -715,8 +715,8 @@
                             "defaultValue": "default",
                             "options": {
                                 "endpointUrl": "data/indexes",
-                                "blackList": "^_.*$",
-                                "createSearchChoice": true
+                                "createSearchChoice": true,
+                                "denyList": "^_.*$"
                             },
                             "required": true,
                             "validators": [
@@ -730,7 +730,7 @@
                         },
                         {
                             "field": "pihole_account",
-                            "label": "Pi-hole Account",
+                            "label": "Account",
                             "help": "",
                             "required": true,
                             "type": "singleSelect",
@@ -742,7 +742,7 @@
                 },
                 {
                     "name": "pihole_status",
-                    "title": "Pihole Blocking Status",
+                    "title": "Blocking Status",
                     "entity": [
                         {
                             "field": "name",
@@ -789,8 +789,8 @@
                             "defaultValue": "default",
                             "options": {
                                 "endpointUrl": "data/indexes",
-                                "blackList": "^_.*$",
-                                "createSearchChoice": true
+                                "createSearchChoice": true,
+                                "denyList": "^_.*$"
                             },
                             "required": true,
                             "validators": [
@@ -804,7 +804,7 @@
                         },
                         {
                             "field": "pihole_account",
-                            "label": "Pi-hole Account",
+                            "label": "Account",
                             "help": "",
                             "required": true,
                             "type": "singleSelect",
@@ -816,7 +816,7 @@
                 },
                 {
                     "name": "pihole_cache",
-                    "title": "Pihole DNS Cache",
+                    "title": "DNS cache information",
                     "entity": [
                         {
                             "field": "name",
@@ -863,8 +863,8 @@
                             "defaultValue": "default",
                             "options": {
                                 "endpointUrl": "data/indexes",
-                                "blackList": "^_.*$",
-                                "createSearchChoice": true
+                                "createSearchChoice": true,
+                                "denyList": "^_.*$"
                             },
                             "required": true,
                             "validators": [
@@ -878,7 +878,7 @@
                         },
                         {
                             "field": "pihole_account",
-                            "label": "Pi-hole Account",
+                            "label": "Account",
                             "help": "",
                             "required": true,
                             "type": "singleSelect",
