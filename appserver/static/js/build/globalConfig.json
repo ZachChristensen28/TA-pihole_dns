@@ -55,10 +55,10 @@
                         },
                         {
                             "field": "pihole_host",
-                            "label": "Pi-hole Host",
+                            "label": "Pi-hole host",
                             "type": "text",
                             "required": true,
-                            "help": "Enter the FQDN/IP for the Pi-hole® Server.",
+                            "help": "Enter the FQDN/IP for the Pi-hole® server.",
                             "options": {
                                 "placeholder": "IP/FQDN"
                             },
@@ -67,7 +67,7 @@
                                     "type": "string",
                                     "minLength": 1,
                                     "maxLength": 200,
-                                    "errorMsg": "Length of Hostname should be between 1 and 200"
+                                    "errorMsg": "Length of hostname should be between 1 and 200"
                                 }
                             ]
                         },
