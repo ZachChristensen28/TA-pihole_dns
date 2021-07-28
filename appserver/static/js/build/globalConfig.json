@@ -23,7 +23,11 @@
                             },
                             {
                                 "field": "pihole_host",
-                                "label": "Pi-hole Host"
+                                "label": "Host"
+                            },
+                            {
+                                "field": "pihole_port",
+                                "label": "API port"
                             }
                         ],
                         "actions": [
@@ -89,10 +93,10 @@
                         },
                         {
                             "field": "api_port",
-                            "label": "API Port",
+                            "label": "API port",
                             "type": "text",
                             "required": false,
-                            "help": "(Optional) Enter the Port number used for the API.",
+                            "help": "(Optional) Enter the port number used for the API.",
                             "options": {
                                 "placeholder": "Optional"
                             },
@@ -252,6 +256,10 @@
                     {
                         "field": "name",
                         "label": "Name"
+                    },
+                    {
+                        "field": "pihole_account",
+                        "label": "Account"
                     },
                     {
                         "field": "interval",

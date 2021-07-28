@@ -22,9 +22,9 @@ def collect_events(helper, ew):
     helper.log_info(f'log_level="{log_level}"')
 
     # Start..
-    event_name = 'pihole_ftl_dbinfo'
+    event_name = 'pihole_dbinfo'
     response = sendit(pihole_host, event_name, helper,
-                      endpoint=const.api_ftl_dbinfo)
+                      endpoint=const.api_dbinfo)
 
     if not response:
         return False
