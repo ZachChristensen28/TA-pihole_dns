@@ -29,6 +29,7 @@ Version 2.0.0
 - Removed legacy API inputs
 - Removed legacy list scripted input
 - Updating extractions for dnssec queries
+- Added metadata field for use in license estimation
 ```
 
 ## Documentation
