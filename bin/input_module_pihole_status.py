@@ -12,10 +12,6 @@ def validate_input(helper, definition):
 
 
 def collect_events(helper, ew):
-    # Get Credentials
-    account = helper.get_arg('pihole_account')
-    pihole_host = account['pihole_host']
-
     # Get Log Level
     log_level = helper.get_log_level()
     helper.set_log_level(log_level)
@@ -23,6 +19,7 @@ def collect_events(helper, ew):
 
     # Start..
     event_name = 'pihole_status'
+    pihole_host = helper.get_arg('pihole_account')['pihole_host']
     response = sendit(pihole_host, event_name, helper,
                       endpoint=const.api_status)
 

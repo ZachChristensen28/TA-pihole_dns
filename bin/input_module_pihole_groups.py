@@ -13,12 +13,6 @@ def validate_input(helper, definition):
 
 
 def collect_events(helper, ew):
-    # Get Credentials
-    account = helper.get_arg('pihole_account')
-    api_pass = account['api_pass']
-    pihole_host = account['pihole_host']
-
-    # Event Name
     event_name = 'pihole_groups'
 
     # Get Log Level
@@ -27,7 +21,8 @@ def collect_events(helper, ew):
     helper.log_info(f'log_level="{log_level}"')
 
     # Authenticate
-    s = PHAuth(pihole_host, api_pass, helper)
+    s = PHAuth(helper)
+    pihole_host = s.host
     s.start_session(event_name)
 
     if not s.sid:

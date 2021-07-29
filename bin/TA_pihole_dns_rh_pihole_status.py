@@ -27,7 +27,7 @@ fields = [
         'index',
         required=True,
         encrypted=False,
-        default='default',
+        default=None,
         validator=validator.String(
             min_len=1,
             max_len=80,

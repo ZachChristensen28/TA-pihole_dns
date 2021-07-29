@@ -10,23 +10,23 @@ class PHAuth:
 
     Required Params
     ---------------
-    :param host: Pi-hole host to query
-    :param password: password to authenticate
     :param helper: helper
     """
 
-    def __init__(self, host, password, helper):
-        self.host = host
-        self.password = password
+    def __init__(self, helper):
         self.helper = helper
+        self.account = self.helper.get_arg('pihole_account')
+        self.host = self.account['pihole_host']
+        self.password = self.account['api_pass']
         self.sid = None
         self.port = None
         try:
-            self.helper.get_arg('account')['api_port']
+            self.account['api_port']
         except KeyError:
-            self.helper.log_info(f'msg="API port not defined", hostname="{self.host}"')
+            self.helper.log_info(
+                f'msg="API port not defined", hostname="{self.host}"')
         else:
-            self.port = self.helper.get_arg('account')['api_port']
+            self.port = self.account['api_port']
 
         if self.port:
             self.url = f'{const.h_proto}://{self.host}:{self.port}/{const.api_auth}'
