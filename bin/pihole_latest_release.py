@@ -49,10 +49,6 @@ class ModInputpihole_latest_release(modinput_wrapper.base_modinput.BaseModInput)
         For customized inputs, hard code the arguments here to hide argument detail from users.
         For other input types, arguments should be get from input_module. Defining new input types could be easier.
         """
-        scheme.add_argument(smi.Argument("pihole_account", title="Account",
-                                         description="",
-                                         required_on_create=True,
-                                         required_on_edit=False))
         return scheme
 
     def get_app_name(self):
@@ -68,7 +64,6 @@ class ModInputpihole_latest_release(modinput_wrapper.base_modinput.BaseModInput)
 
     def get_account_fields(self):
         account_fields = []
-        account_fields.append("pihole_account")
         return account_fields
 
     def get_checkbox_fields(self):

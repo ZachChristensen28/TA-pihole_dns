@@ -34,14 +34,6 @@ fields = [
         )
     ),
     field.RestField(
-        'pihole_account',
-        required=False,
-        encrypted=False,
-        default=None,
-        validator=None
-    ),
-
-    field.RestField(
         'disabled',
         required=False,
         validator=None
