@@ -33,6 +33,9 @@ def collect_events(helper, ew):
     event = {'collection_type': 'version_check'}
     for key, url in const.pihole_versions.items():
         r = sendit(pihole_host, event_name, helper, url=url)
+        if not r:
+            return False
+
         event[key] = {
             'tag_name': r['tag_name'],
             'name': r['name'],
@@ -40,7 +43,7 @@ def collect_events(helper, ew):
         }
 
     splunk_event = helper.new_event(source=helper.get_input_type(), index=helper.get_output_index(
-    ), sourcetype=helper.get_sourcetype(), data=json.dumps(response), host=pihole_host)
+    ), sourcetype=helper.get_sourcetype(), data=json.dumps(event), host=pihole_host)
     ew.write_event(splunk_event)
 
     checkpointer(pihole_host, event_name, helper, set_checkpoint=True)
