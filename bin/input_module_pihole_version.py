@@ -37,7 +37,7 @@ def collect_events(helper, ew):
             return False
 
         event[key] = {
-            'tag_name': r['tag_name'],
+            'tag': r['tag_name'],
             'name': r['name'],
             'published_at': r['published_at']
         }
