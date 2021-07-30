@@ -30,7 +30,7 @@ def collect_events(helper, ew):
 
     # collect current Pi-hole version
     event_name = 'pihole_release_version'
-    event = {'collection_type': 'version_check'}
+    event = {'master_version': 'latest_release'}
     for key, url in const.pihole_versions.items():
         r = sendit(pihole_host, event_name, helper, url=url)
         if not r:
