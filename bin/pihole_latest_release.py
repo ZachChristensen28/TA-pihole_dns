@@ -49,6 +49,10 @@ class ModInputpihole_latest_release(modinput_wrapper.base_modinput.BaseModInput)
         For customized inputs, hard code the arguments here to hide argument detail from users.
         For other input types, arguments should be get from input_module. Defining new input types could be easier.
         """
+        scheme.add_argument(smi.Argument("placeholder", title="placeholder",
+                                         description="",
+                                         required_on_create=False,
+                                         required_on_edit=False))
         return scheme
 
     def get_app_name(self):
