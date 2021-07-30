@@ -53,7 +53,8 @@
     "pihole_clients",
     "pihole_groups",
     "pihole_status",
-    "pihole_cache"
+    "pihole_cache",
+    "pihole_latest_release"
   ],
   "inputGroups": null,
   "incompatibleApps": null,

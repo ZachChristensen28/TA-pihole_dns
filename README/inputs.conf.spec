@@ -21,3 +21,6 @@ pihole_account =
 
 [pihole_cache://<name>]
 pihole_account =
+
+[pihole_latest_release://<name>]
+pihole_account =

@@ -887,6 +887,69 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "pihole_latest_release",
+                    "title": "Latest release check",
+                    "entity": [
+                        {
+                            "field": "name",
+                            "label": "Name",
+                            "type": "text",
+                            "help": "Enter a unique name for the data input",
+                            "required": true,
+                            "validators": [
+                                {
+                                    "type": "regex",
+                                    "pattern": "^[a-zA-Z]\\w*$",
+                                    "errorMsg": "Input Name must start with a letter and followed by alphabetic letters, digits or underscores."
+                                },
+                                {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 100,
+                                    "errorMsg": "Length of input name should be between 1 and 100"
+                                }
+                            ]
+                        },
+                        {
+                            "field": "interval",
+                            "label": "Interval",
+                            "type": "text",
+                            "defaultValue": "11 */4 * * *",
+                            "required": true,
+                            "help": "Time interval of input in seconds, minimum 300s (5 minutes) or a valid cron schedule",
+                            "options": {
+                                "placeholder": "11 */4 * * *"
+                            },
+                            "validators": [
+                                {
+                                    "type": "regex",
+                                    "pattern": "(?:(?:^[3-9][0-9][0-9]$|^[1-9][0-9][0-9][0-9]\\d*$)|(?:^\\S+(?: \\S+){4}))",
+                                    "errorMsg": "Interval must be an integer larger than 300 or a valid cron schedule."
+                                }
+                            ]
+                        },
+                        {
+                            "field": "index",
+                            "label": "Index",
+                            "type": "singleSelect",
+                            "options": {
+                                "endpointUrl": "data/indexes",
+                                "createSearchChoice": true,
+                                "denyList": "^_.*$"
+                            },
+                            "required": true,
+                            "validators": [
+                                {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 80,
+                                    "errorMsg": "Length of index name should be between 1 and 80."
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }
