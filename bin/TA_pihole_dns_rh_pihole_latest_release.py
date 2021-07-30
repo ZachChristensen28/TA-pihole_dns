@@ -35,7 +35,7 @@ fields = [
     ),
     field.RestField(
         'pihole_account',
-        required=True,
+        required=False,
         encrypted=False,
         default=None,
         validator=None
