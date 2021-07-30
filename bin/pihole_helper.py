@@ -8,7 +8,7 @@ import pihole_constants as const
 def sendit(pihole_host, event_name, helper, endpoint=None, params=None, sid=None):
     """Send Request
 
-    :param pihole_host: Pihole server to query
+    :param pihole_host: Pihole server/url to query
     :param event_name: Name of event performing the request
     :param helper: Splunk Helper
     :param endpoint: API endpoint
