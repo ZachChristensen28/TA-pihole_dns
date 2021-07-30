@@ -43,6 +43,7 @@ fields = [
             max_len=8192,
         )
     ),
+
     field.RestField(
         'disabled',
         required=False,
