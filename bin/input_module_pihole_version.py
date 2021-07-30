@@ -32,7 +32,7 @@ def collect_events(helper, ew):
     event_name = 'pihole_release_version'
     event = {'collection_type': 'version_check'}
     for key, url in const.pihole_versions.items():
-        r = sendit(url, event_name, helper)
+        r = sendit(pihole_host, event_name, helper, url=url)
         event[key] = {
             'tag_name': r['tag_name'],
             'name': r['name'],

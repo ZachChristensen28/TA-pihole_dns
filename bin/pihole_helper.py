@@ -5,15 +5,16 @@ import time
 import pihole_constants as const
 
 
-def sendit(pihole_host, event_name, helper, endpoint=None, params=None, sid=None):
+def sendit(pihole_host, event_name, helper, endpoint=None, params=None, sid=None, url=None):
     """Send Request
 
-    :param pihole_host: Pihole server/url to query
+    :param pihole_host: Pihole server to query
     :param event_name: Name of event performing the request
     :param helper: Splunk Helper
     :param endpoint: API endpoint
     :param params: Parameters for request
     :param sid: Session ID
+    :param url: Optionally use a url
     :return: response
     """
     # Skip run if too close to previous run interval
@@ -49,13 +50,14 @@ def sendit(pihole_host, event_name, helper, endpoint=None, params=None, sid=None
     else:
         dest = pihole_host
 
-    url = f'{const.h_proto}://{dest}/{endpoint}'
+    if not url:
+        url = f'{const.h_proto}://{dest}/{endpoint}'
 
     # Get Proxy Information
     proxy = helper.get_proxy()
     if proxy:
         if proxy["proxy_username"]:
-            helper.log_info('msg="Proxy is configured with authenticaiton"')
+            helper.log_info('msg="Proxy is configured with authentication"')
             helper.log_debug(
                 f'proxy_type="{proxy["proxy_type"]}", proxy_url="{proxy["proxy_url"]}", proxy_port="{proxy["proxy_port"]}", proxy_username="{proxy["proxy_username"]}"')
         else:
