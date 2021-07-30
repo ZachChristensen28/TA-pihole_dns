@@ -18,7 +18,7 @@ def collect_events(helper, ew):
 
     event_name = 'pihole_release_version'
     pihole_host = 'github'
-    event = {'type': 'latest_release_check'}
+    event = {}
     for key, url in const.pihole_versions.items():
         r = sendit(pihole_host, event_name, helper, url=url)
         if not r:
