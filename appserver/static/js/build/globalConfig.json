@@ -889,7 +889,7 @@
                     ]
                 },
                 {
-                    "name": "pihole_latest_release",
+                    "name": "pihole_latest",
                     "title": "Latest release check",
                     "entity": [
                         {

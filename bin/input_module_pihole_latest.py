@@ -16,7 +16,7 @@ def collect_events(helper, ew):
     helper.set_log_level(log_level)
     helper.log_info(f'log_level="{log_level}"')
 
-    event_name = 'pihole_release_version'
+    event_name = 'pihole_latest'
     pihole_host = 'github'
     event = {}
     for key, url in const.pihole_versions.items():

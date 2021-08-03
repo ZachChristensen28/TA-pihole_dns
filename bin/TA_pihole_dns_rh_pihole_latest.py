@@ -34,7 +34,7 @@ fields = [
         )
     ),
     field.RestField(
-        'placeholder',
+        'pihole_noop',
         required=False,
         encrypted=False,
         default=None,
@@ -55,7 +55,7 @@ model = RestModel(fields, name=None)
 
 
 endpoint = DataInputModel(
-    'pihole_latest_release',
+    'pihole_latest',
     model,
 )
 
