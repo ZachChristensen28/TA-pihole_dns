@@ -1,3 +1,4 @@
+
 import ta_pihole_dns_declare
 
 from splunktaucclib.rest_handler.endpoint import (

@@ -35,7 +35,7 @@ class ModInputpihole_cache(modinput_wrapper.base_modinput.BaseModInput):
     def get_scheme(self):
         """overloaded splunklib modularinput method"""
         scheme = super(ModInputpihole_cache, self).get_scheme()
-        scheme.title = ("DNS cache information")
+        scheme.title = ("DNS Cache Information")
         scheme.description = (
             "Go to the add-on\'s configuration UI and configure modular inputs under the Inputs menu.")
         scheme.use_external_validation = True
