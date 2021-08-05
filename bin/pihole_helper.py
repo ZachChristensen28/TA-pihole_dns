@@ -39,7 +39,7 @@ def sendit(pihole_host, event_name, helper, endpoint=None, params=None, sid=None
     port = None
     try:
         helper.get_arg('pihole_account')['api_port']
-    except KeyError:
+    except KeyError or TypeError:
         helper.log_info(
             f'msg="API port not defined", hostname="{pihole_host}"')
     else:
