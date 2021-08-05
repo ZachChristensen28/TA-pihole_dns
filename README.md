@@ -30,7 +30,7 @@ Version 2.0.0
 - Removed legacy list scripted input
 - Updating extractions for dnssec queries
 - Added metadata field for use in license estimation
-- the version api script will query github to pull latest versions
+- the latest_release api script will query github to pull latest versions
 ```
 
 ## Documentation
