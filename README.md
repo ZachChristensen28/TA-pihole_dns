@@ -1,7 +1,10 @@
-# TA-pihole_dns - Pi-hole Add-on for Splunk
+# Pi-hole Add-on for Splunk - TA-pihole_dns
 
 ![GitHub](https://img.shields.io/github/license/zachchristensen28/TA-pihole_dns)
 [![Documentation Status](https://readthedocs.org/projects/splunk-pihole-ta-documentation/badge/?version=latest)](https://splunk-pihole-ta-documentation.readthedocs.io/en/latest/?badge=latest)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ZachChristensen28/TA-pihole_dns)
+[![Splunkbase App](https://img.shields.io/badge/Splunkbase-TA--pihole__dns-blue)](https://splunkbase.splunk.com/app/4505/)
+[![Splunk CIM Version](https://img.shields.io/badge/Splunk%20CIM%20Version-4.x-success)](https://docs.splunk.com/Documentation/CIM/latest/User/Overview)
 
 Info | Description
 ------|----------
