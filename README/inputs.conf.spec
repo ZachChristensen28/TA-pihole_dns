@@ -7,6 +7,9 @@ pihole_account =
 [pihole_dbinfo://<name>]
 pihole_account =
 
+[pihole_sysinfo://<name>]
+pihole_account =
+
 [pihole_lists://<name>]
 pihole_account =
 

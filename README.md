@@ -23,6 +23,7 @@ Version 2.0.0
     - Get DNS cache information
     - Get System stats
     - Get block lists
+    - Get System Information
 - Adding ability to set interval for modular inputs with a cron schedule
 - Removed python2 libraries
 - Updated AoB version
