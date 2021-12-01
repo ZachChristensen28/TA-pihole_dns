@@ -1,3 +1,4 @@
+@placement search-head
 [<name>]
 api_pass =
 api_port =
