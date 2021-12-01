@@ -5,7 +5,7 @@
     "id": {
       "group": null,
       "name": "TA-pihole_dns",
-      "version": "1.3.2"
+      "version": "2.0.0"
     },
     "author": [
       {
@@ -46,8 +46,16 @@
   },
   "dependencies": null,
   "tasks": [
-    "pihole_system",
-    "pihole_filters"
+    "pihole_domains",
+    "pihole_version",
+    "pihole_dbinfo",
+    "pihole_lists",
+    "pihole_clients",
+    "pihole_groups",
+    "pihole_status",
+    "pihole_cache",
+    "pihole_latest",
+    "pihole_sysinfo"
   ],
   "inputGroups": null,
   "incompatibleApps": null,
