@@ -1,7 +1,16 @@
 # TA-pihole_dns - Pi-hole Add-on for Splunk
 
 ![GitHub](https://img.shields.io/github/license/zachchristensen28/TA-pihole_dns)
-[![Documentation Status](https://readthedocs.org/projects/splunk-pihole-ta-documentation/badge/?version=latest)](https://splunk-pihole-ta-documentation.readthedocs.io/en/latest/?badge=latest)
+[![docs](https://github.com/ZachChristensen28/splunk-pihole-ta-documentation/actions/workflows/ci.yml/badge.svg)](https://splunk-pihole-ta.ztsplunker.com/)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ZachChristensen28/TA-pihole_dns)
+[![Splunkbase App](https://img.shields.io/badge/Splunkbase-TA--pihole__dns-blue)](https://splunkbase.splunk.com/app/4505/)
+[![Splunk CIM Version](https://img.shields.io/badge/Splunk%20CIM%20Version-4.x-success)](https://docs.splunk.com/Documentation/CIM/latest/User/Overview)
+
+## Documentation
+
+Find full documentation for installing this add-on at [https://splunk-pihole-ta.ztsplunker.com/](https://splunk-pihole-ta.ztsplunker.com/)
+
+## About
 
 Info | Description
 ------|----------
@@ -22,10 +31,6 @@ NOTE: v1.3.0 of this add-on changed the way the modular input works. If existing
 - updated field extractions to include dnssec query events introduced in new Pi-Hole version (Core: v5.4, FTL v5.9).
 ```
 
-## Documentation
-
-Find full documentation for installing this add-on at http://splunk-pihole-ta-documentation.rtfd.io/
-
 ## Bugs/Feature Requests
 
-Please open an issue or submit a feature requests at [github.com](https://github.com/ZachChristensen28/TA-pihole_dns)
+Please open an issue or submit a feature requests at [github.com](https://github.com/ZachChristensen28/TA-pihole_dns/issues)
