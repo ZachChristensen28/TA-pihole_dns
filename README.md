@@ -29,7 +29,6 @@ NOTE: v1.3.0 of this add-on changed the way the modular input works. If existing
 
 - adding dest field to map to CIM.
 - Added dest_port field to forwarded events.
-- Updated answer field to default to reply_code if answer does not exist.
 - Adding new special domain block field extractions (see Pi-hole pull request for more info: https://github.com/pi-hole/FTL/pull/1338).
 - Adding query_type field.
 ```
