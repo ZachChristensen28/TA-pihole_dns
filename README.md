@@ -30,6 +30,7 @@ NOTE: v1.3.0 of this add-on changed the way the modular input works. If existing
 - adding dest field to map to CIM.
 - updated CNAME reply codes to respond with NoError.
 - Added dest_port field to forwarded events.
+- Updated answer field to default to reply_code if answer does not exist.
 ```
 
 ## Bugs/Feature Requests
