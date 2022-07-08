@@ -31,7 +31,8 @@ NOTE: v1.3.0 of this add-on changed the way the modular input works. If existing
 - Added dest_port field to forwarded events.
 - Added new special domain block field extractions (see Pi-hole pull request for more info: https://github.com/pi-hole/FTL/pull/1338).
 - Added query_type field.
-- Removed special characters from reply_code field
+- Removed special characters from reply_code field.
+- Updated pihole eventtype.
 ```
 
 ## Bugs/Feature Requests
