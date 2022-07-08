@@ -28,7 +28,6 @@ Version 1.3.2
 NOTE: v1.3.0 of this add-on changed the way the modular input works. If existing modular inputs were setup prior to version v1.3.0, action must be taken to ensure those inputs continue to function correctly. See the docs for updating to new modular inputs (https://splunk-pihole-ta-documentation.readthedocs.io/en/latest/getting-started/configure-inputs/configure-modinput/#updating-to-new-modular-inputs)
 
 - adding dest field to map to CIM.
-- updated CNAME reply codes to respond with NoError.
 - Added dest_port field to forwarded events.
 - Updated answer field to default to reply_code if answer does not exist.
 - Adding new special domain block field extractions (see Pi-hole pull request for more info: https://github.com/pi-hole/FTL/pull/1338).
