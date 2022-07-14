@@ -39,3 +39,4 @@ TLSA,52,TLSA certificate association
 TSIG,250,Transaction Signature
 TXT,16,Text record
 URI,256,Uniform Resource Identifier
+HTTPS,65,HTTPS Binding
