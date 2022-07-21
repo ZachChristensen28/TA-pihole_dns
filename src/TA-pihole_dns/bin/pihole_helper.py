@@ -44,7 +44,7 @@ def sendit(pihole_host, event_name, helper, params=None):
         try:
             helper.log_info(f'event_name="{event_name}", msg="starting http request", action="starting", hostname="{pihole_host}"')
             r = helper.send_http_request(
-                url, 'get', headers=headers, parameters=params, use_proxy=True)
+                url, 'get', headers=headers, parameters=params, use_proxy=True, verify=False)
         except Exception as e:
             helper.log_error(
                 f'event_name="{event_name}", error_msg="Unable to complete request", action="failed", hostname="{pihole_host}"')
