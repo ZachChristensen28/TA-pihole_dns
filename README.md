@@ -4,7 +4,7 @@
 [![docs](https://github.com/ZachChristensen28/splunk-pihole-ta-documentation/actions/workflows/ci.yml/badge.svg)](https://splunk-pihole-ta.ztsplunker.com/)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ZachChristensen28/TA-pihole_dns)
 [![Splunkbase App](https://img.shields.io/badge/Splunkbase-TA--pihole__dns-blue)](https://splunkbase.splunk.com/app/4505/)
-[![Splunk CIM Version](https://img.shields.io/badge/Splunk%20CIM%20Version-4.x-success)](https://docs.splunk.com/Documentation/CIM/latest/User/Overview)
+[![Splunk CIM Version](https://img.shields.io/badge/Splunk%20CIM%20Version-5.x,%204.x-success)](https://docs.splunk.com/Documentation/CIM/latest/User/Overview)
 
 ## Documentation
 
