@@ -7,7 +7,7 @@ import datetime
 import json
 
 import modinput_wrapper.base_modinput
-from solnlib.packages.splunklib import modularinput as smi
+from splunklib import modularinput as smi
 
 
 
@@ -46,7 +46,7 @@ class ModInputpihole_system(modinput_wrapper.base_modinput.BaseModInput):
         For customized inputs, hard code the arguments here to hide argument detail from users.
         For other input types, arguments should be get from input_module. Defining new input types could be easier.
         """
-        scheme.add_argument(smi.Argument("pihole_account", title="Pihole Account",
+        scheme.add_argument(smi.Argument("pihole_account", title="Account",
                                          description="",
                                          required_on_create=True,
                                          required_on_edit=False))

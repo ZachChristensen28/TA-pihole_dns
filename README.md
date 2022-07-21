@@ -25,12 +25,18 @@ The Pi-hole Add-on allows Splunk data administrators to map the Pi-Hole® DNS se
 ```text
 Version 1.3.2
 
+New
 - Added dest field to map to CIM.
 - Added dest_port field to forwarded events.
 - Added new special domain block field extractions (see Pi-hole pull request for more info: https://github.com/pi-hole/FTL/pull/1338).
 - Added query_type field.
-- Removed special characters from reply_code field.
+
+Updated
 - Updated pihole eventtype.
+
+Removed
+- Removed pihole_lists script
+- Removed special characters from reply_code field.
 ```
 
 ## Bugs/Feature Requests
