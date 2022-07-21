@@ -32,6 +32,7 @@ New
 - Added query_type field.
 
 Updated
+- Updated to new AOB version.
 - Updated pihole eventtype.
 
 Removed
@@ -42,3 +43,7 @@ Removed
 ## Bugs/Feature Requests
 
 Please open an issue or submit a feature requests at [github.com](https://github.com/ZachChristensen28/TA-pihole_dns/issues)
+
+## Third-party software
+
+This add-on was developed using the [Splunk Add-on Builder](https://splunkbase.splunk.com/app/2962).
