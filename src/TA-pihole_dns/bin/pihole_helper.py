@@ -72,6 +72,18 @@ def checkpointer(pihole_host, event_name, helper, set_checkpoint=False):
         """
         # Get Interval
         interval = int(helper.get_arg('interval'))
+
+        # Check for Cron schedule
+        try:
+            int(interval)
+        except ValueError:
+            helper.log_info(
+                f'msg="Checkpointer not needed, using cron schedule", hostname="{pihole_host}", event_name="{event_name}"')
+            return True
+        else:
+            interval = int(interval)
+
+        # Proceed to checkpointer
         current_time = int(time.time())
         check_time = current_time - interval + 60
         key = f'{pihole_host}_{event_name}'
