@@ -71,7 +71,7 @@ def checkpointer(pihole_host, event_name, helper, set_checkpoint=False):
         :return: bool
         """
         # Get Interval
-        interval = int(helper.get_arg('interval'))
+        interval = helper.get_arg('interval')
 
         # Check for Cron schedule
         try:
