@@ -44,7 +44,7 @@ def sendit(pihole_host, event_name, helper, params=None):
         try:
             helper.log_info(f'event_name="{event_name}", msg="starting http request", action="starting", hostname="{pihole_host}"')
             r = helper.send_http_request(
-                url, 'get', headers=headers, parameters=params, use_proxy=True)
+                url, 'get', headers=headers, parameters=params, use_proxy=True, verify=False)
         except Exception as e:
             helper.log_error(
                 f'event_name="{event_name}", error_msg="Unable to complete request", action="failed", hostname="{pihole_host}"')
@@ -71,7 +71,19 @@ def checkpointer(pihole_host, event_name, helper, set_checkpoint=False):
         :return: bool
         """
         # Get Interval
-        interval = int(helper.get_arg('interval'))
+        interval = helper.get_arg('interval')
+
+        # Check for Cron schedule
+        try:
+            int(interval)
+        except ValueError:
+            helper.log_info(
+                f'msg="Checkpointer not needed, using cron schedule", hostname="{pihole_host}", event_name="{event_name}"')
+            return True
+        else:
+            interval = int(interval)
+
+        # Proceed to checkpointer
         current_time = int(time.time())
         check_time = current_time - interval + 60
         key = f'{pihole_host}_{event_name}'

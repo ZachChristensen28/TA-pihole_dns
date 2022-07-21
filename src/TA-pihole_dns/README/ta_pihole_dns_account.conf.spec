@@ -1,4 +1,4 @@
 @placement search-head
 [<name>]
-api_key =
+api_pass =
 pihole_host =

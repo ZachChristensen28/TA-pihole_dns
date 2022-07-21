@@ -40,8 +40,7 @@
     },
     "releaseNotes": {
       "name": "README",
-      "text": "./README.md",
-      "uri": "https://github.com/ZachChristensen28/TA-pihole_dns/releases"
+      "uri": "https://splunk-pihole-ta.ztsplunker.com/reference/releases/"
     }
   },
   "dependencies": null,

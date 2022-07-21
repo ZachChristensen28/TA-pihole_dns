@@ -25,7 +25,7 @@ fields = [
         )
     ),
     field.RestField(
-        'api_key',
+        'api_pass',
         required=True,
         encrypted=True,
         default=None,
@@ -33,8 +33,17 @@ fields = [
             min_len=1,
             max_len=8192,
         )
-    )
-
+    ),
+    field.RestField(
+        'api_port',
+        required=False,
+        encrypted=False,
+        default=None,
+        validator=validator.String(
+            min_len=1,
+            max_len=200,
+        )
+    ),
 ]
 model = RestModel(fields, name=None)
 
