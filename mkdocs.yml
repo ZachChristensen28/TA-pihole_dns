@@ -1,7 +1,9 @@
 site_name: Pi-hole Add-on for Splunk Documentation
-edit_uri: ""
+edit_uri: edit/master/docs/
 repo_url: https://github.com/ZachChristensen28/TA-pihole_dns
 repo_name: ZachChristensen28/TA-pihole_dns
+site_description: >-
+  Welcome to the Home of the Pi-hole Add-on for Splunk documentation. The Pi-hole Add-on allows Splunk data administrators to map the Pi-Hole® DNS server events to the CIM enabling the data to be used with other Splunk Apps, such as the Pihole App for Splunk.
 
 plugins:
   - git-revision-date-localized:
@@ -10,15 +12,18 @@ plugins:
   - search
   - minify:
       minify_html: true
-      minify_js: true
-      minify_css: true
 
 markdown_extensions:
   - toc:
       permalink: true
   - attr_list
+  - def_list
+  - footnotes
   - meta
   - admonition
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
   - pymdownx.details
   - pymdownx.superfences
   - abbr
@@ -27,9 +32,22 @@ markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
 
 theme:
   name: material
@@ -39,13 +57,19 @@ theme:
     repo: fontawesome/brands/github
   features:
     # - header.autohide
+    - content.code.copy
     - navigation.instant
     - navigation.tabs
+    - navigation.footer
     - navigation.sections
     - navigation.top
     # - toc.integrate
     - navigation.tracking
     - content.code.annotate
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.action.edit
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -70,6 +94,8 @@ extra:
       link: https://github.com/ZachChristensen28
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/ZachTheSplunker
+
+copyright: Copyright &copy; 2023 ZachTheSplunker
 
 nav:
   - Home: index.md
