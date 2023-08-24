@@ -17,48 +17,79 @@ def sendit(pihole_host, event_name, helper, params=None):
         :param params: Parameters for request
         :return: response
         """
+
+        account = helper.get_arg('pihole_account')
+        api_key = account['api_pass']
+        params['auth'] = api_key
+        api_port = None
+        try:
+            account['api_port']
+        except:
+            event_log = zts_logger(
+                msg='API port not defined, Defaulting to port 80',
+                action='success',
+                event_type=event_name,
+                hostname=pihole_host
+            )
+            helper.log_info(event_log)
+        else:
+            api_port = account['api_port']
+
+        if api_port:
+            dest = f'{pihole_host}:{api_port}'
+        else:
+            dest = pihole_host
+
         # Skip run if too close to previous run interval
         if not checkpointer(pihole_host, event_name, helper):
             return False
 
-        helper.log_info(f'event_name="{event_name}", msg="starting {event_name} collection", hostname="{pihole_host}"')
+        event_log = zts_logger(
+            msg=f'started {event_name} collection',
+            hostname=pihole_host,
+            action='started',
+            event_type=event_name
+        )
+        helper.log_info(event_log)
 
         headers = {
         'Accept': 'application/json',
         'Content-type': 'application/json'
         }
-        url = f'{const.h_proto}://{pihole_host}/{const.api_system}'
-
-        # Get Proxy Information
-        proxy = helper.get_proxy()
-        if proxy:
-            if proxy["proxy_username"]:
-                helper.log_info('msg="Proxy is configured with authenticaiton"')
-                helper.log_debug(
-                    f'proxy_type="{proxy["proxy_type"]}", proxy_url="{proxy["proxy_url"]}", proxy_port="{proxy["proxy_port"]}", proxy_username="{proxy["proxy_username"]}"')
-            else:
-                helper.log_info('msg="Proxy is configured with no authentication"')
-                helper.log_debug(
-                    f'proxy_type="{proxy["proxy_type"]}", proxy_url="{proxy["proxy_url"]}", proxy_port="{proxy["proxy_port"]}"')
+        url = f'{const.h_proto}://{dest}/{const.api_system}'
 
         try:
-            helper.log_info(f'event_name="{event_name}", msg="starting http request", action="starting", hostname="{pihole_host}"')
             r = helper.send_http_request(
                 url, 'get', headers=headers, parameters=params, use_proxy=True, verify=False)
         except Exception as e:
-            helper.log_error(
-                f'event_name="{event_name}", error_msg="Unable to complete request", action="failed", hostname="{pihole_host}"')
-            helper.log_debug(f'event_name="{event_name}", hostname="{pihole_host}", error_msg="{e}"')
-            return False
+            event_log = zts_logger(
+                msg='unable to complete request',
+                event_type=event_name,
+                hostname=pihole_host,
+                error_msg={e}
+            )
+            helper.log_error(event_log)
+            raise SystemExit()
 
-        if r.status_code == 200:
-            helper.log_info(f'event_name="{event_name}", msg="request completed", action="success", hostname="{pihole_host}"')
-            return r.json()
-        else:
-            helper.log_error(
-                f'event_name="{event_name}", error_msg="Unable to retrieve information", action="failed", hostname="{pihole_host}"')
-            helper.log_debug(f'event_name="{event_name}", hostname="{pihole_host}", status_code="{r.status_code}"')
-            return False
+        if r.status_code != 200:
+            event_log = zts_logger(
+                msg='Request failed',
+                action='failed',
+                hostname=pihole_host,
+                event_type=event_name,
+                status_code=r.status_code
+            )
+            helper.log_error(event_log)
+            raise SystemExit(r.status_code)
+
+        event_log = zts_logger(
+            msg='Request completed',
+            action='success',
+            event_type=event_name,
+            hostname=pihole_host
+        )
+        helper.log_info(event_log)
+        return r.json()
 
 
 def checkpointer(pihole_host, event_name, helper, set_checkpoint=False):
@@ -112,3 +143,24 @@ def checkpointer(pihole_host, event_name, helper, set_checkpoint=False):
             helper.log_info(f'event_name="{event_name}", msg="Checkpoint file not found", hostname="{pihole_host}"')
 
         return True
+
+def zts_logger(msg, action, event_type, hostname, **kwargs):
+    """ To help with consistent logging format
+    :param msg: message for log
+    :param action: event outcome (started|success|failure|aborted)
+    :param event_type: type of event
+    :param hostname: hostname of event
+    :param kwargs: any kv pair
+    
+    zts_logger(
+            msg='message',
+            action='success',
+            event_type=event_type,
+            hostname=hostname
+        )
+    """
+    event_log = f'msg="{msg}", action="{action}", event_type="{event_type}", hostname="{hostname}"'
+    for key, value in kwargs.items():
+        event_log = event_log + f', {key}="{value}"'
+
+    return event_log
