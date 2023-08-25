@@ -11,20 +11,16 @@ def validate_input(helper, definition):
 
 
 def collect_events(helper, ew):
-    # Get Credentials
-    account = helper.get_arg('pihole_account')
-    api_key = account['api_pass']
-    pihole_host = account['pihole_host']
-
-    # Get Log Level
     log_level = helper.get_log_level()
     helper.set_log_level(log_level)
     helper.log_info(f'log_level="{log_level}"')
 
+    account = helper.get_arg('pihole_account')
+    pihole_host = account['pihole_host']
+
     # Start
     for filter in const.filters:
         params = {
-            'auth': api_key,
             'list': filter
         }
         event_name = f'filters_{params["list"]}'
