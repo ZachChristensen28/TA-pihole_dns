@@ -1,6 +1,25 @@
 # Release history for the Pi-hole Addon for Splunk
 
-The latest version of the Pi-hole Addon for Splunk is version 1.3.2. See [Release notes for the Pi-hole Add on for Splunk](../../releases/) of the latest version.
+The latest version of the Pi-hole Addon for Splunk is version 1.3.3. See [Release notes for the Pi-hole Add on for Splunk](../../releases/) of the latest version.
+
+## v1.3.2 <small>July 20, 2022</small>
+
+### New
+
+- Added dest field to map to CIM.
+- Added dest_port field to forwarded events.
+- Added new special domain block field extractions (see Pi-hole pull request for more info: <https://github.com/pi-hole/FTL/pull/1338>).
+- Added query_type field.
+
+### Updated
+
+- Updated to new AOB version.
+- Updated pihole eventtype.
+
+### Removed
+
+- Removed pihole_lists script
+- Removed special characters from reply_code field.
 
 ## v1.3.1 <small>July 8, 2021</small>
 

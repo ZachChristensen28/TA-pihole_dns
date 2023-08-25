@@ -1,5 +1,4 @@
 ---
-ᴴₒᴴₒᴴₒ: true
 hide:
     - navigation
     - toc
@@ -27,7 +26,7 @@ This documentation assumes the following:
 
 Info | Description
 ------|----------
-Version | 1.3.2 - [Splunkbase](https://splunkbase.splunk.com/app/4505) \| [GitHub](https://github.com/ZachChristensen28/TA-pihole_dns)
+Version | 1.3.3 - [Splunkbase](https://splunkbase.splunk.com/app/4505) \| [GitHub](https://github.com/ZachChristensen28/TA-pihole_dns)
 Vendor Product Version | [Pi-hole® v5.x, FTL 5.x](https://pi-hole.net/)
 Splunk CIM | 5.x, 4.x
 Add-on has a web UI | Yes, this Add-on contains a configuration page for the Modular Input.
