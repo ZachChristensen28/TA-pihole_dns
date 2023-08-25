@@ -44,19 +44,20 @@ def sendit(pihole_host, event_name, helper, params=None):
         if not checkpointer(pihole_host, event_name, helper):
             return False
 
-        event_log = zts_logger(
-            msg=f'started {event_name} collection',
-            hostname=pihole_host,
-            action='started',
-            event_type=event_name
-        )
-        helper.log_info(event_log)
-
         headers = {
         'Accept': 'application/json',
         'Content-type': 'application/json'
         }
         url = f'{const.h_proto}://{dest}/{const.api_system}'
+
+        event_log = zts_logger(
+            msg=f'started {event_name} collection',
+            hostname=pihole_host,
+            action='started',
+            event_type=event_name,
+            url=url
+        )
+        helper.log_info(event_log)
 
         try:
             r = helper.send_http_request(
