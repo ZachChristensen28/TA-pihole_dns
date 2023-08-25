@@ -5,11 +5,11 @@
     "id": {
       "group": null,
       "name": "TA-pihole_dns",
-      "version": "1.3.2"
+      "version": "1.3.3"
     },
     "author": [
       {
-        "name": "Zach Christensen",
+        "name": "ZachTheSplunker",
         "email": null,
         "company": null
       }
