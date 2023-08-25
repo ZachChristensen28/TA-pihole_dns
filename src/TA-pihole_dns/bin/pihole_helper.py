@@ -65,7 +65,7 @@ def sendit(pihole_host, event_name, helper, params=None):
         except Exception as e:
             event_log = zts_logger(
                 msg='unable to complete request',
-                action="failed"
+                action="failed",
                 event_type=event_name,
                 hostname=pihole_host,
                 error_msg=e
