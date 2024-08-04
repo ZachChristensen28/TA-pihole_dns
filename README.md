@@ -15,7 +15,7 @@ Find full documentation for installing this add-on at [https://splunk-pihole-ta.
 
 Info | Description
 ------|-----------
-Version | 1.3.3 - See on [Splunkbase](https://splunkbase.splunk.com/app/4505/)
+Version | 1.3.4 - See on [Splunkbase](https://splunkbase.splunk.com/app/4505/)
 Vendor Product Version | [Pi-hole® v5.x, FTL 5.x](https://pi-hole.net/)
 Add-on has a web UI | Yes, this Add-on contains a configuration page for the Modular Input.
 

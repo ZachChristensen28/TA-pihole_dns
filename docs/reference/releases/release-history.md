@@ -1,6 +1,13 @@
 # Release history for the Pi-hole Addon for Splunk
 
-The latest version of the Pi-hole Addon for Splunk is version 1.3.3. See [Release notes for the Pi-hole Add on for Splunk](../../releases/) of the latest version.
+The latest version of the Pi-hole Addon for Splunk is version 1.3.4. See [Release notes for the Pi-hole Add on for Splunk](../../releases/) of the latest version.
+
+## v1.3.3 <small>August 24, 2023</small>
+
+### Updated
+
+- Fixed issue with Api Port in modular input - [#56](https://github.com/ZachChristensen28/TA-pihole_dns/issues/56){ target="blank" }
+- Updated Splunklib
 
 ## v1.3.2 <small>July 20, 2022</small>
 
